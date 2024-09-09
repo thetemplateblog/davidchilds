@@ -1,10 +1,10 @@
 ---
 id: 44a24403-a614-4b55-a0ac-55742bae0cf1
 blueprint: testimonial
-title: 'Mark L., Software Developer'
+title: 'Mark L.'
 author: 7266057c-f171-4f85-9147-19c32a16643d
-updated_by: 7266057c-f171-4f85-9147-19c32a16643d
-updated_at: 1725388375
+updated_by: e721ea7d-a7b7-4257-9eaf-c54f259bb52b
+updated_at: 1725475934
 template: landing
 job_title: 'Software Developer'
 ---

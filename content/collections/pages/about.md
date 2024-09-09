@@ -3,9 +3,11 @@ id: 9de9ddba-aab9-4a63-8430-1ef866f5381e
 blueprint: page
 title: About
 author: 7266057c-f171-4f85-9147-19c32a16643d
-template: default
-updated_by: 7266057c-f171-4f85-9147-19c32a16643d
-updated_at: 1725191739
+template: writing/show
+updated_by: e721ea7d-a7b7-4257-9eaf-c54f259bb52b
+updated_at: 1725908020
+hide_nav: false
+parent: home
 ---
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec erat ipsum, tincidunt consequat gravida eget, commodo quis dui. Curabitur at finibus nisl, at pellentesque massa. Ut vulputate bibendum tortor. Aliquam eget condimentum metus, sed faucibus mauris. Integer rutrum, ligula vitae hendrerit mattis, enim nibh posuere est, sit amet tristique risus massa vitae risus. Nam orci ligula, pretium nec quam non, vulputate iaculis enim. In dignissim dignissim ultrices. Mauris mi odio, malesuada venenatis rutrum a, rutrum eget velit. Nunc et est in quam posuere maximus. Vivamus varius ac orci nec pretium. Donec vulputate maximus augue, at euismod lectus semper ac. Etiam urna nunc, ultrices et facilisis vitae, tincidunt in metus.
 

@@ -1,0 +1,16 @@
+    <!-- Header -->
+
+        <div class="max-w-screen-xl mx-auto px-4">
+            <nav class="flex flex-col lg:flex-row justify-between items-center">
+                <a href="/" class="text-red-500 text-4xl font-light mb-6 lg:mb-0">David Childs</a>
+                <div class="border-t border-b border-gray-300 py-4 px-6">
+                    <ul class="flex space-x-12">
+                        {{ nav:collection:pages include_home="true" }}
+                            {{ if !hide_nav }}
+                                <li><a href="{{ url }}" class="menu-item text-gray-600 hover:text-gray-800 text-xl">{{ title }}</a></li>
+                            {{ /if }}
+                        {{ /nav:collection:pages }}
+                    </ul>
+                </div>
+            </nav>
+        </div>

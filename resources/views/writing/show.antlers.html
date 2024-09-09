@@ -1,0 +1,62 @@
+<style>
+    html {
+      overflow-y: scroll; /* Prevent jump caused by appearing/disappearing scrollbar */
+    }
+  </style>
+  
+  <div class="max-w-screen-xl mx-auto px-4 lg:px-8">  <!-- Consistent padding added -->
+  
+      <!-- Hero Section -->
+      <section class="py-100">
+          {{ partial:hero }}
+      </section>
+  
+      <!-- Line under Hero Section -->
+      <div class="max-w-screen-xl mx-auto">
+          <hr class="w-full border-t border-gray-300 mt-8">
+      </div>
+  
+      <!-- Blog Content Section with Sidebar -->
+      <div class="lg:flex lg:space-x-8 pt-12"> <!-- Consistent layout using flex -->
+          <!-- Blog Posts Section -->
+          <div class="lg:w-2/3 space-y-8"> <!-- Main content retains 2/3 width -->
+              <article class="p-6 bg-white shadow-sm border border-gray-300">
+                  <h2 class="text-2xl font-light mb-4 text-red-500">
+                      {{ title }}
+                  </h2>
+                  <div class="flex items-center text-gray-500 text-sm mb-4 space-x-4">
+                      <span>{{ author:name }}</span>
+                      <span>&#8226;</span>
+                      <span>{{ date }}</span>
+                      <span>&#8226;</span>
+                      {{ if categories }}
+                          <span>Categories:</span>
+                            {{ categories }}
+                                <span><a href="{{ url }}" class="hover:text-red-500">{{ title }}</a></span>
+                            {{ /categories }}
+                      {{ /if }}
+                  </div>
+                  <div class="prose prose-lg max-w-none text-gray-700 content">
+                      {{ intro }}
+                      {{ content }}
+                  </div>
+              </article>
+          </div>
+  
+          <!-- Sidebar Section -->
+          <aside class="lg:w-1/3 space-y-8">
+            <!-- Mailing List Widget -->
+            {{ partial:mailing_list }}
+        
+            <!-- Search Form -->
+            {{ partial:search_form }}
+        
+            <!-- Recent Posts Section -->
+            {{ partial:latest_posts }}
+        
+            <!-- Categories Section -->
+            {{ partial:categories }}
+        </aside>
+      </div>
+  </div>
+  
