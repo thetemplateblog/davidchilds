@@ -69,3 +69,11 @@ tabs:
             field:
               type: terms
               display: 'Taxonomy Terms'
+          -
+            handle: categories
+            field:
+              type: terms
+              taxonomies:
+                - categories
+              display: Categories
+              mode: select
