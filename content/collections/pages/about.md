@@ -1,11 +1,12 @@
 ---
 id: 9de9ddba-aab9-4a63-8430-1ef866f5381e
+published: false
 blueprint: page
 title: About
 author: 7266057c-f171-4f85-9147-19c32a16643d
 template: writing/show
 updated_by: e721ea7d-a7b7-4257-9eaf-c54f259bb52b
-updated_at: 1725908020
+updated_at: 1726024193
 hide_nav: false
 parent: home
 ---

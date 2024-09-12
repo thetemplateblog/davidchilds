@@ -13,15 +13,22 @@
     <body class="bg-tile-pattern bg-repeat bg-fixed">
         <!-- header -->
         {{ if !hide_nav }}
-            <header class="py-12">
+            <header class="py-12 max-w-screen-xl mx-auto px-4"> <!-- Ensure header is limited -->
                 {{ partial:nav }} 
             </header>
         {{ /if }}
             
         <!-- Main Section -->
-        <main class="pb-12">
+        <main class="pb-12 max-w-screen-xl mx-auto px-4"> <!-- Limit main content too -->
             {{ template_content }}
         </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white py-6"> <!-- Ensure footer padding -->
+            <div class="max-w-screen-xl mx-auto px-4"> <!-- Limit footer content width -->
+                {{ partial:footer }}
+            </div>
+        </footer>
 
         <script>
             // Get the current page URL path
@@ -38,11 +45,5 @@
                 }
             });
         </script>
-
-
-        <!-- Footer -->
-        <footer class="bg-gray-800 text-white">
-            {{ partial:footer }}
-        </footer>
     </body>
 </html>
