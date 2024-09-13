@@ -4,6 +4,21 @@ tabs:
     display: Main
     sections:
       -
+        display: Meta
+        fields:
+          -
+            handle: meta_title
+            field:
+              character_limit: 60
+              type: text
+              display: 'Meta Title'
+          -
+            handle: meta_description
+            field:
+              character_limit: 160
+              type: textarea
+              display: 'Meta Description'
+      -
         fields:
           -
             handle: title
