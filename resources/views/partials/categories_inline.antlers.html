@@ -1,11 +1,14 @@
 <div class="p-6 border border-gray-300">
-    <h3 class="text-xl font-light text-gray-800 inline-block">Categories:</h3>
+    <!-- Use flexbox to align "Categories:" inline with category titles -->
+    <div class="flex items-center">
+        <!-- Title -->
+        <h3 class="text-xl font-light text-gray-800 inline-block">Categories:</h3>
 
-    <!-- Inline Category Links -->
-    <div class="inline-block flex-wrap gap-2"> <!-- Adjusted to fit inline with the title -->
-        {{ taxonomy:categories }}
-            <a href="{{ url }}" class="text-red-500 hover:text-red-700">{{ title }}</a> <!-- Inline category items next to the title -->
-        {{ /taxonomy:categories }}
+        <!-- Add space after the title and inline category links with gray separators -->
+        <div class="flex items-center ml-4 flex-wrap">  <!-- Use 'ml-4' to add space after title -->
+            {{ taxonomy:categories }}
+                <a href="{{ url }}" class="text-red-500 hover:text-red-700 after:content-['|'] after:text-gray-500 last:after:content-[''] after:mx-2">{{ title }}</a>
+            {{ /taxonomy:categories }}
+        </div>
     </div>
 </div>
-
