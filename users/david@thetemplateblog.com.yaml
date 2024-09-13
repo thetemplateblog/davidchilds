@@ -1,6 +1,6 @@
 name: 'David Childs'
 super: true
 id: e721ea7d-a7b7-4257-9eaf-c54f259bb52b
-password_hash: $2y$12$7fsGqo3hOrubF7cPn5a./OkjbsO19LBchKtXdkiad6CqjGuqV3mGC
+password_hash: $2y$12$L51dhB2ZexD2v7CrZe8Cz.Jb.GWbD3xY2FIIhYwfchN8QJGWmLI46
 preferences:
   theme: dark
