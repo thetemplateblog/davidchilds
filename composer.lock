@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3aaffd29f116c12e2df196407ab11b7e",
+    "content-hash": "02dfb8efcbff1f50e7c2af88dfa1a7b5",
     "packages": [
         {
             "name": "ajthinking/archetype",
@@ -68,6 +68,57 @@
                 "source": "https://github.com/ajthinking/archetype/tree/v2.0.0"
             },
             "time": "2024-05-11T08:05:58+00:00"
+        },
+        {
+            "name": "arthurperton/popular",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/arthurperton/statamic-popular.git",
+                "reference": "530e332ebd30491303b628bd5be5dbfddae5665d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/arthurperton/statamic-popular/zipball/530e332ebd30491303b628bd5be5dbfddae5665d",
+                "reference": "530e332ebd30491303b628bd5be5dbfddae5665d",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4 || ^8.0 || ^8.1",
+                "statamic/cms": ">=3.3.48"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.2",
+                "orchestra/testbench": "^7.13",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "extra": {
+                "statamic": {
+                    "name": "Popular",
+                    "description": "Pageview tracker for Statamic 3+"
+                },
+                "laravel": {
+                    "providers": [
+                        "ArthurPerton\\Popular\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ArthurPerton\\Popular\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Pageview tracker for Statamic 3+",
+            "support": {
+                "issues": "https://github.com/arthurperton/statamic-popular/issues",
+                "source": "https://github.com/arthurperton/statamic-popular/tree/v1.1.0"
+            },
+            "time": "2023-08-08T12:47:49+00:00"
         },
         {
             "name": "brick/math",
