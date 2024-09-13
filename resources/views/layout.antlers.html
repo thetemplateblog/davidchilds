@@ -6,10 +6,44 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ title ?? site:name }}</title>
         {{ vite src="resources/js/site.js|resources/css/site.css" }}
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     </head>
-    <body class="bg-gray-100 font-sans leading-normal text-gray-800">
-        <div class="mx-auto px-2 lg:min-h-screen flex flex-col items-center justify-center">
+
+    <body class="bg-tile-pattern bg-repeat bg-fixed">
+        <!-- header -->
+        {{ if !hide_nav }}
+            <header class="py-12 max-w-screen-xl mx-auto px-4"> <!-- Ensure header is limited -->
+                {{ partial:nav }} 
+            </header>
+        {{ /if }}
+            
+        <!-- Main Section -->
+        <main class="pb-12 max-w-screen-xl mx-auto px-4"> <!-- Limit main content too -->
             {{ template_content }}
-        </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white py-6"> <!-- Ensure footer padding -->
+            <div class="max-w-screen-xl mx-auto px-4"> <!-- Limit footer content width -->
+                {{ partial:footer }}
+            </div>
+        </footer>
+
+        <script>
+            // Get the current page URL path
+            const currentPath = window.location.pathname;
+
+            // Select all menu-item links
+            const menuItems = document.querySelectorAll('.menu-item');
+
+            // Iterate through each menu item and check if it matches the current URL
+            menuItems.forEach(item => {
+                if (item.getAttribute('href') === currentPath) {
+                    item.classList.remove('text-gray-600');  // Remove the default class
+                    item.classList.add('text-red-500');      // Add the active class
+                }
+            });
+        </script>
     </body>
 </html>
