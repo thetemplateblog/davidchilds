@@ -1,5 +1,5 @@
 title: '@seo:title'
-description: '@seo:content'
+description: '@seo:intro'
 site_name: 'David Childs'
 site_name_position: after
 site_name_separator: '|'
