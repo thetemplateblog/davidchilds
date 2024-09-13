@@ -54,6 +54,11 @@ return [
 
     'widgets' => [
         'getting_started',
+        [ 
+        'type' => 'popular',
+        'collection' => 'writing',
+        'limit' => 5,
+        ], 
     ],
 
     /*
