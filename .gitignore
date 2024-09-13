@@ -4,6 +4,7 @@
 /public/hot
 /public/storage
 /public/vendor/statamic
+/storage/popular/*
 /storage/*.key
 /vendor
 .env
