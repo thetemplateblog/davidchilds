@@ -1,0 +1,11 @@
+<div class="p-6 border border-gray-300">
+    <h3 class="text-xl font-light text-gray-800 inline-block">Categories:</h3>
+
+    <!-- Inline Category Links -->
+    <div class="inline-block flex-wrap gap-2"> <!-- Adjusted to fit inline with the title -->
+        {{ taxonomy:categories }}
+            <a href="{{ url }}" class="text-red-500 hover:text-red-700">{{ title }}</a> <!-- Inline category items next to the title -->
+        {{ /taxonomy:categories }}
+    </div>
+</div>
+

@@ -10,7 +10,7 @@
           {{ partial:hero }}
       </section>
   
-      <!-- Line under Hero Section -->
+      Line under Hero Section
       <div class="max-w-screen-xl mx-auto">
           <hr class="w-full border-t border-gray-300 mt-8">
       </div>
@@ -20,40 +20,30 @@
           <!-- About Me -->
           <div>
               <h4 class="text-xl lg:text-2xl font-light mb-4">About Me</h4>
-              <p class="mb-4 text-gray-600">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-              <div class="inline-block border border-gray-300 mb-4">
-                  <img src="assets/img/picture1.jpg" alt="About Me" class="w-full p-2">
-              </div>
+              <p class="mb-4 text-gray-600">Hey there! I'm David Childs,</p>
+              <p class="mb-4 text-gray-600">I'm excited to share a bit about myself with you. Grab a seat, and let's dive into my world of tech, problem-solving, and writing!</p>
+              <p class="mb-4 text-gray-600">I'm a Consulting Systems Engineer, which is a fancy way of saying I'm the go-to person for managing computer systems and data centers in big companies.</p>
+              <p class="mb-4 text-gray-600">Think of me as a behind-the-scenes superhero for technology!</p>
+
               <!-- Button Below Image -->
               <div class="flex justify-left">
-                  <a href="#" class="inline-block bg-black text-white py-1 px-4 hover:bg-gray-800">Read more</a>
+                  <a href="{{ permalink }}/writing/about-me" class="inline-block bg-black text-white py-1 px-4 hover:bg-gray-800">Read more</a>
               </div>
           </div>
   
-          <!-- Projects -->
-          <div>
-              <h4 class="text-xl lg:text-2xl font-light mb-4">Projects</h4>
-              <p class="mb-4 text-gray-600">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-              <div class="inline-block border border-gray-300 mb-4">
-                  <img src="assets/img/picture2.jpg" alt="Projects" class="w-full p-2">
-              </div>
-              <!-- Button Below Image -->
-              <div class="flex justify-left">
-                  <a href="#" class="inline-block bg-black text-white py-1 px-4 hover:bg-gray-800">Read more</a>
-              </div>
-          </div>
+            <!-- Projects Section -->
+            <div>
+                <h4 class="text-xl lg:text-2xl font-light mb-4">Writing Projects</h4>
+                <p class="mb-4 text-gray-600">I specialize in making technical concepts approachable.</p>
+                <p class="mb-4 text-gray-600">Whether it's writing clear documentation or step-by-step tutorials, I ensure accuracy while keeping things simple for readers.</p>
+                <p class="mb-4 text-gray-600">From engineering guides to cloud computing, my focus is on helping others understand complex topics.</p>
+                <p class="mb-4 text-gray-600">I find great satisfaction in simplifying technical information, making it accessible without losing its complexity or depth.</p>
+                </div>
+
   
           <!-- Latest Posts -->
           <div>
-              <h4 class="text-xl lg:text-2xl font-light mb-4">Latest Posts</h4>
-              <p class="mb-4 text-gray-600">Lorem ipsum dolor sit amet...</p>
-              <div class="inline-block border border-gray-300 mb-4">
-                  <img src="assets/img/picture3.jpg" alt="Latest Posts" class="w-full p-2">
-              </div>
-              <!-- Button Below Image -->
-              <div class="flex justify-left">
-                  <a href="#" class="inline-block bg-black text-white py-1 px-4 hover:bg-gray-800">Read more</a>
-              </div>
+              {{ partial:latest_posts_front }}
           </div>
       </div>
   </div>
