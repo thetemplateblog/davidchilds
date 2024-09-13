@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "02dfb8efcbff1f50e7c2af88dfa1a7b5",
+    "content-hash": "2d242b8f7d5055b16f75c626cfdea368",
     "packages": [
         {
             "name": "ajthinking/archetype",
@@ -119,6 +119,56 @@
                 "source": "https://github.com/arthurperton/statamic-popular/tree/v1.1.0"
             },
             "time": "2023-08-08T12:47:49+00:00"
+        },
+        {
+            "name": "austenc/socialize",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/austenc/socialize.git",
+                "reference": "3d1910d9c839e63102cefa02d787d5950c32bdbb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/austenc/socialize/zipball/3d1910d9c839e63102cefa02d787d5950c32bdbb",
+                "reference": "3d1910d9c839e63102cefa02d787d5950c32bdbb",
+                "shasum": ""
+            },
+            "require-dev": {
+                "nunomaduro/collision": "^4.2",
+                "orchestra/testbench": "^5.3",
+                "statamic/cms": "^3.0"
+            },
+            "type": "statamic-addon",
+            "extra": {
+                "statamic": {
+                    "name": "Socialize",
+                    "description": "Simple social sharing buttons for your Statamic site"
+                },
+                "laravel": {
+                    "providers": [
+                        "Austenc\\Socialize\\SocializeProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Austenc\\Socialize\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Austen Cameron"
+                }
+            ],
+            "description": "Simple social sharing buttons for your Statamic site",
+            "support": {
+                "email": "info@406.io",
+                "issues": "https://github.com/austenc/socialize/issues",
+                "source": "https://github.com/austenc/socialize/tree/master"
+            },
+            "time": "2020-08-23T20:12:41+00:00"
         },
         {
             "name": "brick/math",

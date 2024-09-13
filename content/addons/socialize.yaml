@@ -1,0 +1,10 @@
+twitter_enabled: true
+twitter_url: null
+twitter_text: null
+twitter_hashtags: null
+twitter_related: null
+facebook_enabled: true
+facebook_url: null
+email_enabled: false
+email_subject: null
+email_text: null
