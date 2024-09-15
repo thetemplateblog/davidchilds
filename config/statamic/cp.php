@@ -59,6 +59,10 @@ return [
         'collection' => 'writing',
         'limit' => 5,
         ], 
+        [
+        'type' => 'seo_pro',
+        'width' => 50,
+    	]
     ],
 
     /*
