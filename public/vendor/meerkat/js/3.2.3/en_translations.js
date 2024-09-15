@@ -1,0 +1,1 @@
+(function () {/* Provides language patches for the Meerkat v3.2.3 addon. */var _statamic = window['Statamic'];_statamic.booting(function() {var _cst = _statamic.$config.get('translations');_statamic.$config.set('translations', _cst);})})();

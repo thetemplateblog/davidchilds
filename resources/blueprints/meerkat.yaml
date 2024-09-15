@@ -1,0 +1,29 @@
+title: 'Meerkat Comment Submission'
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: name
+            field:
+              type: text
+              display: Name
+              validate: 'required|max:100|min:1'
+              listable: hidden
+              input_type: text
+          -
+            handle: email
+            field:
+              type: text
+              display: Email
+              validate: required|email
+          -
+            handle: comment
+            field:
+              type: text
+              display: Comment
+              validate: 'required|min:5|max:2500'
+              listable: hidden
+              input_type: text
