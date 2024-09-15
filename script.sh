@@ -1,6 +1,5 @@
 export COMPOSER_ALLOW_SUPERUSER=1
 composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
-echo "" | sudo -S service php8.3-fpm reload
 
 rm -rf node_modules
 npm install
