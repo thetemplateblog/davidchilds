@@ -5,5 +5,6 @@ site_name_position: after
 site_name_separator: '|'
 canonical_url: '@seo:permalink'
 image: false
+twitter_handle: '@iamdavidchilds'
 priority: 0.5
 change_frequency: weekly
