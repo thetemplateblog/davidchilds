@@ -1,16 +1,34 @@
-    <!-- Header -->
-    <script async data-uid="8062c04364" src="https://david-childs.ck.page/8062c04364/index.js"></script>
-        <div class="max-w-screen-xl mx-auto px-4 pt-8">
-            <nav class="flex flex-col lg:flex-row justify-between items-center">
-                <a href="/" class="text-red-500 text-4xl font-light mb-6 lg:mb-0">David Childs</a>
-                <div class="border-t border-b border-gray-300 py-4 px-6">
-                    <ul class="flex space-x-12">
-                        {{ nav:collection:pages include_home="true" }}
-                            {{ if !hide_nav }}
-                                <li><a href="{{ url }}" class="menu-item text-gray-600 hover:text-gray-800 text-xl">{{ title }}</a></li>
-                            {{ /if }}
-                        {{ /nav:collection:pages }}
-                    </ul>
-                </div>
-            </nav>
+<!-- Header -->
+<script async data-uid="8062c04364" src="https://david-childs.ck.page/8062c04364/index.js"></script>
+<div x-data="{ mobileMenuOpen: false }" class="pt-8">
+    <nav class="flex flex-col lg:flex-row justify-between items-center">
+        <div class="flex justify-between items-center w-full lg:w-auto">
+            <a href="/" class="text-red-500 text-4xl font-light">David Childs</a>
+            <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
         </div>
+        <div :class="{'hidden': !mobileMenuOpen}" class="lg:flex lg:items-center mt-4 lg:mt-0">
+            <ul class="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-12">
+                {{ nav:collection:pages include_home="true" }}
+                    {{ if !hide_nav }}
+                        <li><a href="{{ url }}" class="nav-link block py-2 lg:py-0">{{ title }}</a></li>
+                    {{ /if }}
+                {{ /nav:collection:pages }}
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<!-- Mobile Menu Overlay -->
+<div x-show="mobileMenuOpen" @click="mobileMenuOpen = false" class="mobile-menu lg:hidden">
+    <div class="mobile-menu-content" @click.stop>
+        {{ nav:collection:pages include_home="true" }}
+            {{ if !hide_nav }}
+                <a href="{{ url }}" class="mobile-menu-link">{{ title }}</a>
+            {{ /if }}
+        {{ /nav:collection:pages }}
+    </div>
+</div>

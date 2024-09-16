@@ -2,4 +2,59 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-/* This is all you. */
+/* Custom styles */
+@layer components {
+  .container {
+    @apply max-w-screen-xl mx-auto px-4 lg:px-8;
+  }
+}
+
+/* Styles moved from inline */
+html {
+  overflow-y: scroll; /* Prevent jump caused by appearing/disappearing scrollbar */
+}
+
+/* Blog post styles */
+.blog-post {
+  @apply p-6 bg-white shadow-sm border border-gray-300;
+}
+
+.blog-post-title {
+  @apply text-2xl font-light mb-4 text-red-500;
+}
+
+.blog-post-metadata {
+  @apply flex items-center text-gray-500 text-sm mb-4 space-x-4;
+}
+
+.blog-post-content {
+  @apply prose prose-lg max-w-none text-gray-700;
+}
+
+/* Navigation styles */
+.nav-link {
+  @apply text-gray-600 hover:text-gray-800 text-xl;
+}
+
+.nav-link-active {
+  @apply text-red-500;
+}
+
+/* Mobile menu styles */
+.mobile-menu {
+  @apply hidden fixed inset-0 bg-gray-800 bg-opacity-75 z-50;
+}
+
+.mobile-menu-content {
+  @apply flex flex-col justify-center items-center h-full;
+}
+
+.mobile-menu-link {
+  @apply text-white text-2xl mb-4 hover:text-red-500;
+}
+
+/* Utility classes */
+.py-100 {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}

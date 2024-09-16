@@ -1,63 +1,49 @@
-<style>
-    html {
-      overflow-y: scroll; /* Prevent jump caused by appearing/disappearing scrollbar */
-    }
-  </style>
-  
-  <div class="max-w-screen-xl mx-auto px-4 lg:px-8"> <!-- Consistent padding is applied -->
-      <!-- Hero Section -->
-      <section class="py-100">
-          {{ partial:hero }}
-      </section>
-  
-      <div class="max-w-screen-xl mx-auto">
-          <hr class="w-full border-t border-gray-300 mt-8">
-      </div>
-  
-      <!-- Image Section (Consistent Grid for Columns) -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12">
-          <!-- About Me -->
-          <div>
-              <h4 class="text-xl lg:text-2xl font-light mb-4">About Me</h4>
-              <p class="mb-4 text-gray-600">Hey there! I'm David Childs,</p>
-              <p class="mb-4 text-gray-600">I'm excited to share a bit about myself with you. Grab a seat, and let's dive into my world of tech, problem-solving, and writing!</p>
-              <p class="mb-4 text-gray-600">I'm a Consulting Systems Engineer, which is a fancy way of saying I'm the go-to person for managing computer systems and data centers in big companies.</p>
-              <p class="mb-4 text-gray-600">Think of me as a behind-the-scenes superhero for technology!</p>
+<div class="container">
+    <!-- Hero Section -->
+    <section class="py-6">
+        {{ partial:hero }}
+    </section>
 
-              <!-- Button Below Image -->
-              <div class="flex justify-left">
-                  <a href="{{ permalink }}/writing/about-me" class="inline-block bg-black text-white py-1 px-4 hover:bg-gray-800">Read more</a>
-              </div>
-          </div>
-  
-            <!-- Projects Section -->
-            <div>
-                <h4 class="text-xl lg:text-2xl font-light mb-4">Writing Projects</h4>
-                <p class="mb-4 text-gray-600">I specialize in making technical concepts approachable.</p>
-                <p class="mb-4 text-gray-600">Whether it's writing clear documentation or step-by-step tutorials, I ensure accuracy while keeping things simple for readers.</p>
-                <p class="mb-4 text-gray-600">From engineering guides to cloud computing, my focus is on helping others understand complex topics.</p>
-                <p class="mb-4 text-gray-600">I find great satisfaction in simplifying technical information, making it accessible without losing its complexity or depth.</p>
-                </div>
+    <hr class="w-full border-t border-gray-300 my-12">
 
-          <!-- Latest Posts -->
-          <div>
-              {{ partial:latest_posts_front }}
-          </div>
-      </div>
-  </div>
-  
-  <!-- Divider Line Under Pictures (Full Width Line) -->
-  <div class="max-w-screen-xl mx-auto px-4 lg:px-8"> <!-- Consistent padding -->
-      <hr class="w-full border-t border-gray-300 mt-8">
-  </div>
-  
-  <!-- Latest Article Section (Reduced Space Above) -->
-  <section class="pt-8">
-      <div class="max-w-screen-xl mx-auto px-4 lg:px-8"> <!-- Consistent padding -->
-          <div>
-              <h3 class="text-2xl font-light mb-4">Latest article</h3>
-              {{ partial:latest_post }}
-          </div>
-      </div>
-  </section>
-  
+    <!-- Main Content Section -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <!-- About Me -->
+        <div>
+            <h4 class="text-xl lg:text-2xl font-light mb-6">About Me</h4>
+            <p class="mb-4 text-gray-600">Hey there! I'm David Childs,</p>
+            <p class="mb-4 text-gray-600">I'm excited to share a bit about myself with you. Grab a seat, and let's dive into my world of tech, problem-solving, and writing!</p>
+            <p class="mb-4 text-gray-600">I'm a Consulting Systems Engineer, which is a fancy way of saying I'm the go-to person for managing computer systems and data centers in big companies.</p>
+            <p class="mb-4 text-gray-600">Think of me as a behind-the-scenes superhero for technology!</p>
+
+            <div class="mt-6">
+                <a href="{{ permalink }}/writing/about-me" class="inline-block bg-black text-white py-2 px-4 hover:bg-gray-800 transition duration-300">Read more</a>
+            </div>
+        </div>
+
+        <!-- Projects Section -->
+        <div>
+            <h4 class="text-xl lg:text-2xl font-light mb-6">Writing Projects</h4>
+            <p class="mb-4 text-gray-600">I specialize in making technical concepts approachable.</p>
+            <p class="mb-4 text-gray-600">Whether it's writing clear documentation or step-by-step tutorials, I ensure accuracy while keeping things simple for readers.</p>
+            <p class="mb-4 text-gray-600">From engineering guides to cloud computing, my focus is on helping others understand complex topics.</p>
+            <p class="mb-4 text-gray-600">I find great satisfaction in simplifying technical information, making it accessible without losing its complexity or depth.</p>
+        </div>
+
+        <!-- Latest Posts -->
+        <div>
+            {{ partial:latest_posts_front }}
+        </div>
+    </div>
+</div>
+
+<!-- Divider Line -->
+<div class="container my-12">
+    <hr class="w-full border-t border-gray-300">
+</div>
+
+<!-- Latest Article Section -->
+<section class="container pb-12">
+    <h3 class="text-2xl font-light mb-6">Latest article</h3>
+    {{ partial:latest_post }}
+</section>

@@ -1,64 +1,84 @@
-<style>
-    html {
-      overflow-y: scroll; /* Prevent jump caused by appearing/disappearing scrollbar */
-    }
-</style>
-
-<!-- Full-width Hero Section -->
-<div class="max-w-screen-xl mx-auto px-4 lg:px-8">  <!-- Full-width container for hero and line -->
-
+<div class="container">
     <!-- Hero Section -->
-    <section class="py-100">
+    <section class="py-12">
         {{ partial:hero }}
     </section>
 
-      <!-- Line under Hero Section -->
-      <div class="max-w-screen-xl mx-auto">
-        <hr class="w-full border-t border-gray-300 mt-8">
-    </div>
-  <section class="py-100">
-      {{ partial:categories_inline }}
-  </section>
+    <hr class="w-full border-t border-gray-300 my-8">
 
+    <!-- Categories Inline Section -->
+    <section class="py-12">
+        {{ partial:categories_inline }}
+    </section>
+
+    <!-- Constrained Blog Content Section -->
+    <div class="max-w-5xl mx-auto py-12">
+        <!-- Blog Content Section -->
+        <div class="space-y-8">
+            <!-- Blog Post-->
+            <article class="p-6 bg-white shadow-sm border border-gray-300">
+                <!-- Title -->
+                <h2 class="text-2xl font-light mb-4 text-red-500">
+                    {{ title }}
+                </h2>
+
+                <!-- Post Metadata -->
+                <div class="flex items-center text-sm text-gray-500 mb-4 space-x-4">
+                    <span>{{ author:name }}</span>
+                    <span>&#8226;</span>
+                    <span>{{ date format="F j, Y" }}</span>
+                    <span>&#8226;</span>
+
+                    <!-- Categories -->
+                    {{ if categories }}
+                        <span>Categories:</span>
+                        {{ categories }}
+                            <span><a href="{{ url }}" class="hover:text-red-500">{{ title }}</a></span>
+                        {{ /categories }}
+                    {{ /if }}
+                </div>
+
+                <!-- Content -->
+                <div class="prose prose-lg text-gray-700">
+                    {{ intro }}
+                    {{ content }}
+                    {{ socialize }}
+                </div>
+            </article>
+        </div> <!-- End Blog Posts Section -->
+    </div> <!-- End Constrained Blog Content Section -->
 </div>
 
-<!-- Constrained Blog Content Section -->
-<div class="max-w-5xl mx-auto px-4 lg:px-6">  <!-- Narrower content, around ~768-880px width -->
-
-    <!-- Blog Content Section -->
-    <div class="pt-12 space-y-8">
-
-        <!-- Blog Post-->
-        <article class="p-6 bg-white shadow-sm border border-gray-300">
-            <!-- Title -->
-            <h2 class="text-2xl font-light mb-4 text-red-500">
-                {{ title }}
-            </h2>
-
-            <!-- Post Metadata -->
-            <div class="flex items-center text-gray-500 text-sm mb-4 space-x-4">
-                <span>{{ author:name }}</span>
-                <span>&#8226;</span>
-                <span>{{ date }}</span>
-                <span>&#8226;</span>
-
-                <!-- Categories -->
-                {{ if categories }}
-                    <span>Categories:</span>
-                    {{ categories }}
-                        <span><a href="{{ url }}" class="hover:text-red-500">{{ title }}</a></span>
-                    {{ /categories }}
-                {{ /if }}
-            </div>
-
-            <!-- Content -->
-            <div class="prose prose-lg max-w-none text-gray-700 content">
-                {{ intro }}
-                {{ content }}
-                {{ socialize }}
-            </div>
-        </article>
-
-    </div> <!-- End Blog Posts Section -->
-
-</div> <!-- End Constrained Blog Content Section -->
+<!-- Structured Data for Blog Post -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{ title }}",
+    "datePublished": "{{ date format="Y-m-d" }}",
+    "dateModified": "{{ last_modified format="Y-m-d" }}",
+    "author": {
+        "@type": "Person",
+        "name": "{{ author:name }}"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "{{ site:name }}",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "{{ site:url }}{{ site:logo }}"
+        }
+    },
+    "description": "{{ intro | strip_tags | truncate:160 }}",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ current_url }}"
+    }
+    {{ if featured_image }}
+        ,"image": {
+            "@type": "ImageObject",
+            "url": "{{ site:url }}{{ featured_image }}"
+        }
+    {{ /if }}
+}
+</script>
