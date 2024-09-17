@@ -4,3 +4,12 @@ id: 443cb49f-b30a-4e19-8c4a-fc72691de37d
 password_hash: $2y$12$0R9Gm8qcUpPOfb7TFRhbYOx7UFT7ZaDNDMu.nGzClN0InWpeM71p2
 preferences:
   theme: light
+  collections:
+    writing:
+      columns:
+        - title
+        - author
+        - slug
+        - date
+        - status
+        - pageviews
