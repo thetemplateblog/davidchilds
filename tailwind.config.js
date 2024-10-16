@@ -17,7 +17,7 @@ module.exports = {
                 'red-500': '#ff0000',  // Red color for active elements (like Home link and buttons)
             },
             backgroundImage: {
-                'tile-pattern': "url('/assets/img/bg.png')", // Path to your background tile image
+                'tile-pattern': "url('../../content/assets/img/bg.png')", // Path to your background tile image
             },
             backgroundSize: {
                 'custom-size': '16px 16px', // Custom size for tiled patterns
