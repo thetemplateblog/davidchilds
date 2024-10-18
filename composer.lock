@@ -4548,16 +4548,16 @@
         },
         {
             "name": "statamic/cms",
-            "version": "v5.31.0",
+            "version": "v5.32.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/statamic/cms.git",
-                "reference": "741db252614f8b68a86eb408fb07d03e9666c351"
+                "reference": "6e69539d9f29766480c38aeb55ed4f1b42d1b25d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/statamic/cms/zipball/741db252614f8b68a86eb408fb07d03e9666c351",
-                "reference": "741db252614f8b68a86eb408fb07d03e9666c351",
+                "url": "https://api.github.com/repos/statamic/cms/zipball/6e69539d9f29766480c38aeb55ed4f1b42d1b25d",
+                "reference": "6e69539d9f29766480c38aeb55ed4f1b42d1b25d",
                 "shasum": ""
             },
             "require": {
@@ -4640,7 +4640,7 @@
             ],
             "support": {
                 "issues": "https://github.com/statamic/cms/issues",
-                "source": "https://github.com/statamic/cms/tree/v5.31.0"
+                "source": "https://github.com/statamic/cms/tree/v5.32.0"
             },
             "funding": [
                 {
@@ -4648,20 +4648,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-10-14T18:45:38+00:00"
+            "time": "2024-10-18T15:13:43+00:00"
         },
         {
             "name": "statamic/seo-pro",
-            "version": "6.2.0",
+            "version": "6.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/statamic/seo-pro.git",
-                "reference": "23afc52df1d5e5421e04407aa1d52c5179dd5988"
+                "reference": "5bfdf14483c1135f39743f0a242d94e21043e016"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/statamic/seo-pro/zipball/23afc52df1d5e5421e04407aa1d52c5179dd5988",
-                "reference": "23afc52df1d5e5421e04407aa1d52c5179dd5988",
+                "url": "https://api.github.com/repos/statamic/seo-pro/zipball/5bfdf14483c1135f39743f0a242d94e21043e016",
+                "reference": "5bfdf14483c1135f39743f0a242d94e21043e016",
                 "shasum": ""
             },
             "require": {
@@ -4692,9 +4692,9 @@
             "notification-url": "https://packagist.org/downloads/",
             "support": {
                 "issues": "https://github.com/statamic/seo-pro/issues",
-                "source": "https://github.com/statamic/seo-pro/tree/6.2.0"
+                "source": "https://github.com/statamic/seo-pro/tree/6.3.0"
             },
-            "time": "2024-10-05T02:42:59+00:00"
+            "time": "2024-10-16T00:53:34+00:00"
         },
         {
             "name": "statamic/stringy",
@@ -10132,12 +10132,12 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {},
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2"
     },
-    "platform-dev": {},
+    "platform-dev": [],
     "plugin-api-version": "2.6.0"
 }
