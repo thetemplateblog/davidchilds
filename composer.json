@@ -15,6 +15,7 @@
         "intervention/image": "^2.7",
         "laravel/framework": "^11",
         "laravel/tinker": "^2.9",
+        "mitydigital/statamic-two-factor": "^2.2",
         "statamic/cms": "^5.0",
         "statamic/seo-pro": "^6.1"
     },
