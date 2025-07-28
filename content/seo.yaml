@@ -7,4 +7,5 @@ canonical_url: '@seo:permalink'
 image: false
 twitter_handle: '@iamdavidchilds'
 priority: 0.5
-change_frequency: weekly
+change_frequency: daily
+google_verification: G-NEJ08R5ZDJ
