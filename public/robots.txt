@@ -1,2 +1,3 @@
 User-agent: *
 Disallow:
+Sitemap: https://davidchilds.me/sitemap.xml
