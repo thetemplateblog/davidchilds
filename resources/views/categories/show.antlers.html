@@ -1,80 +1,150 @@
-<style>
-    html {
-      overflow-y: scroll; /* Prevent jump caused by appearing/disappearing scrollbar */
-    }
-  </style>
-  
-  <div class="max-w-screen-xl mx-auto px-4 lg:px-8"> <!-- Consistent padding applied here -->
-  
-      <!-- Hero Section -->
-      <section class="py-100">
-          {{ partial:hero }}
-      </section>
-  
-      <!-- Line under Hero Section -->
-      <div class="max-w-screen-xl mx-auto">
-          <hr class="w-full border-t border-gray-300 mt-8">
-      </div>
-      <section class="py-100"></section>
-        {{ partial:categories_inline }}
-    </section>
-      <!-- Blog Content Section (Consistent layout using flex and spacing) -->
-      <div class="lg:flex lg:space-x-8 pt-8">
-  
-          <!-- Blog Posts Section -->
-          <div class="space-y-8">
-              <!-- Blog Post 1 -->
-              {{ entries sort="date:desc" paginate="3" as="posts" }}
-              {{ posts }}
-              <article class="p-6 bg-white shadow-sm border border-gray-300">
-                  <h2 class="text-2xl font-light mb-4 text-red-500">
-                      <a href="{{ url }}" class="hover:underline">{{ title }}</a>
-                  </h2>
-                  
-                  <div class="text-sm text-gray-500 mb-4 flex items-center space-x-4 border-b border-gray-300 pb-2">
-                      <!-- Date -->
-                      <div>
-                          <i class="far fa-calendar-alt mr-1"></i> 
-                          {{ date }}
-                      </div>
-                      
-                      <!-- Categories -->
-                      <div>
-                          <i class="fas fa-folder mr-1"></i>
-                          {{ if categories }}
-                            Categories:
-                            {{ categories }}
-                                <a href="{{ url }}" class="text-red-500 hover:underline">{{ title }}</a>
-                            {{ /categories }}
-                          {{ /if }}
-                      </div>
-                  </div>
-                  
-                  <!-- Content and Continue Reading Link -->
-                  <div class="prose prose-lg max-w-none text-gray-700 content">
-                      {{ intro }}
-                  </div>
-                  
-                  <p class="text-gray-600 mt-4">
-                      <a href="{{ url }}" class="block mt-4 text-left text-red-500 hover:text-red-700 italic">Continue Reading &raquo;</a>
-                  </p>
-              </article>
-              {{ /posts }}
-            <!-- Pagination Links Block -->
-            {{ paginate }}
-                <div class="flex items-center justify-center space-x-8 text-center mx-auto">
-                    {{ if prev_page }}
-                        <a href="{{ prev_page }}" class="text-red-500 hover:underline">Previous</a>
-                    {{ /if }}
-                    
-                    {{ if next_page }}
-                        <a href="{{ next_page }}" class="text-red-500 hover:underline">Next</a>
-                    {{ /if }}
-                </div>
-            {{ /paginate }}
-            {{ /entries }}
-          </div>
+<!-- Category Header -->
+<section class="bg-white border-b border-neutral-200">
+    <div class="container-custom py-16">
+        <div class="max-w-3xl">
+            <div class="mb-4">
+                <a href="/writing" class="inline-flex items-center text-neutral-600 hover:text-primary-600 transition-colors">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                    Back to Writing
+                </a>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">{{ title }}</h1>
+            {{ if content }}
+                <p class="text-xl text-neutral-600">{{ content }}</p>
+            {{ /if }}
+            <div class="mt-4 text-neutral-500">
+                {{ entries | length }} {{ entries | length == 1 ? 'article' : 'articles' }} in this category
+            </div>
+        </div>
+    </div>
+</section>
 
-          </div>
-  </div>
-  
+<!-- Categories Bar -->
+<section class="bg-neutral-50 border-b border-neutral-200">
+    <div class="container-custom py-8">
+        {{ partial:categories_inline }}
+    </div>
+</section>
+
+<!-- Blog Posts Section -->
+<section class="bg-white">
+    <div class="container-custom py-16">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Main Content -->
+            <div class="lg:col-span-2 space-y-8">
+                {{ entries sort="date:desc" :date:lte="now" paginate="5" as="posts" }}
+                    {{ posts }}
+                        <article class="card hover:shadow-lg transition-all duration-300">
+                            <div class="p-8">
+                                <h2 class="text-2xl font-bold mb-3 hover:text-primary-600 transition-colors">
+                                    <a href="{{ url }}">{{ title }}</a>
+                                </h2>
+                                
+                                <div class="flex items-center text-sm text-neutral-500 mb-4">
+                                    {{ if date }}
+                                        <time datetime="{{ date format='Y-m-d' }}">
+                                            {{ date format="F j, Y" }}
+                                        </time>
+                                    {{ /if }}
+                                    {{ if categories }}
+                                        <span class="mx-2">•</span>
+                                        <div class="flex gap-2">
+                                            {{ categories limit="2" }}
+                                                <a href="{{ url }}" class="bg-neutral-100 px-2 py-1 rounded text-xs hover:bg-neutral-200 transition-colors">
+                                                    {{ title }}
+                                                </a>
+                                            {{ /categories }}
+                                        </div>
+                                    {{ /if }}
+                                </div>
+                                
+                                <div class="prose prose-lg text-neutral-600 mb-4">
+                                    {{ intro ?? content | strip_tags | safe_truncate:300 }}
+                                </div>
+                                
+                                <a href="{{ url }}" class="inline-flex items-center text-primary-600 font-medium hover:text-primary-700 transition-colors">
+                                    Continue reading
+                                    <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </article>
+                    {{ /posts }}
+                    
+                    <!-- Pagination -->
+                    {{ paginate }}
+                        <div class="flex items-center justify-between mt-12">
+                            <div>
+                                {{ if prev_page }}
+                                    <a href="{{ prev_page }}" class="btn-secondary">
+                                        ← Previous
+                                    </a>
+                                {{ else }}
+                                    <span class="btn-secondary opacity-50 cursor-not-allowed">
+                                        ← Previous
+                                    </span>
+                                {{ /if }}
+                            </div>
+                            
+                            <div>
+                                {{ if next_page }}
+                                    <a href="{{ next_page }}" class="btn-secondary">
+                                        Next →
+                                    </a>
+                                {{ else }}
+                                    <span class="btn-secondary opacity-50 cursor-not-allowed">
+                                        Next →
+                                    </span>
+                                {{ /if }}
+                            </div>
+                        </div>
+                    {{ /paginate }}
+                {{ /entries }}
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="space-y-8">
+                <!-- About This Category -->
+                {{ if content }}
+                    <div class="card p-6">
+                        <h3 class="font-bold text-lg mb-4">About {{ title }}</h3>
+                        <div class="text-sm text-neutral-600">
+                            {{ content }}
+                        </div>
+                    </div>
+                {{ /if }}
+                
+                <!-- Related Categories -->
+                <div class="card p-6">
+                    <h3 class="font-bold text-lg mb-4">Other Categories</h3>
+                    <div class="space-y-2">
+                        {{ taxonomy:categories limit="8" sort="random" }}
+                            {{ unless id == page:id }}
+                                <a href="{{ url }}" class="block text-neutral-600 hover:text-primary-600 transition-colors">
+                                    {{ title }}
+                                </a>
+                            {{ /unless }}
+                        {{ /taxonomy:categories }}
+                    </div>
+                </div>
+                
+                <!-- Recent Posts in Category -->
+                <div class="card p-6">
+                    <h3 class="font-bold text-lg mb-4">Recent in {{ title }}</h3>
+                    <ul class="space-y-3">
+                        {{ entries sort="date:desc" :date:lte="now" limit="5" }}
+                            <li>
+                                <a href="{{ url }}" class="text-neutral-600 hover:text-primary-600 transition-colors text-sm">
+                                    {{ title }}
+                                </a>
+                            </li>
+                        {{ /entries }}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

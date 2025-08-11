@@ -1,4 +1,4 @@
-{{ collection:writing sort="date:desc" limit="1" as="posts" }}
+{{ collection:writing sort="date:desc" :date:lte="now" limit="1" as="posts" }}
 {{ posts }}
 <article class="p-6 shadow-sm border border-gray-300">
     <h2 class="text-2xl font-light mb-4 text-red-500">
