@@ -11,22 +11,78 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                'background': '#f7f7f7', // Light-grey background for the whole site
-                'title-dark': '#333333',  // Darker black used for titles on Blog and other pages
-                'border-light': '#dddddd', // Light grey border for card components on pages
-                'red-500': '#ff0000',  // Red color for active elements (like Home link and buttons)
+                'neutral': {
+                    50: '#fafafa',
+                    100: '#f5f5f5',
+                    200: '#e5e5e5',
+                    300: '#d4d4d4',
+                    400: '#a3a3a3',
+                    500: '#737373',
+                    600: '#525252',
+                    700: '#404040',
+                    800: '#262626',
+                    900: '#171717',
+                },
+                'primary': {
+                    50: '#eff6ff',
+                    100: '#dbeafe',
+                    200: '#bfdbfe',
+                    300: '#93bbfc',
+                    400: '#60a5fa',
+                    500: '#3b82f6',
+                    600: '#2563eb',
+                    700: '#1d4ed8',
+                    800: '#1e40af',
+                    900: '#1e3a8a',
+                },
             },
-            backgroundImage: {
-                'tile-pattern': "url('../../content/assets/img/bg.png')", // Path to your background tile image
+            fontFamily: {
+                'sans': ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                'display': ['Cal Sans', 'Inter', 'system-ui', 'sans-serif'],
             },
-            backgroundSize: {
-                'custom-size': '16px 16px', // Custom size for tiled patterns
+            fontSize: {
+                'xs': ['0.75rem', { lineHeight: '1rem' }],
+                'sm': ['0.875rem', { lineHeight: '1.25rem' }],
+                'base': ['1rem', { lineHeight: '1.5rem' }],
+                'lg': ['1.125rem', { lineHeight: '1.75rem' }],
+                'xl': ['1.25rem', { lineHeight: '1.75rem' }],
+                '2xl': ['1.5rem', { lineHeight: '2rem' }],
+                '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
+                '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
+                '5xl': ['3rem', { lineHeight: '1.16' }],
+                '6xl': ['3.75rem', { lineHeight: '1' }],
+                '7xl': ['4.5rem', { lineHeight: '1' }],
+                '8xl': ['6rem', { lineHeight: '1' }],
+            },
+            spacing: {
+                '18': '4.5rem',
+                '88': '22rem',
+                '100': '25rem',
+                '120': '30rem',
+            },
+            borderRadius: {
+                'xl': '1rem',
+                '2xl': '1.5rem',
+            },
+            animation: {
+                'fade-in': 'fadeIn 0.5s ease-in-out',
+                'slide-up': 'slideUp 0.3s ease-out',
+            },
+            keyframes: {
+                fadeIn: {
+                    '0%': { opacity: '0' },
+                    '100%': { opacity: '1' },
+                },
+                slideUp: {
+                    '0%': { transform: 'translateY(10px)', opacity: '0' },
+                    '100%': { transform: 'translateY(0)', opacity: '1' },
+                },
             },
         },
     },
 
     plugins: [
-        require('@tailwindcss/typography'), // Plugin for advanced typography styling
+        require('@tailwindcss/typography'),
     ],
 };
 

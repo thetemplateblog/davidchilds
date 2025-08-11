@@ -3,9 +3,9 @@ id: home
 blueprint: pages
 title: Home
 template: home
-author: 7266057c-f171-4f85-9147-19c32a16643d
-updated_by: e721ea7d-a7b7-4257-9eaf-c54f259bb52b
-updated_at: 1726364649
+author: 443cb49f-b30a-4e19-8c4a-fc72691de37d
+updated_by: 443cb49f-b30a-4e19-8c4a-fc72691de37d
+updated_at: 1754327918
 hide_nav: false
 seo:
   description: '@seo:content'

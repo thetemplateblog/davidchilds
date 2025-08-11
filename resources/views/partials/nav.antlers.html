@@ -1,16 +1,44 @@
     <!-- Header -->
     <script async data-uid="8062c04364" src="https://david-childs.ck.page/8062c04364/index.js"></script>
-        <div class="max-w-screen-xl mx-auto px-4 pt-8">
-            <nav class="flex flex-col lg:flex-row justify-between items-center">
-                <a href="/" class="text-red-500 text-4xl font-light mb-6 lg:mb-0">David Childs</a>
-                <div class="border-t border-b border-gray-300 py-4 px-6">
-                    <ul class="flex space-x-12">
-                        {{ nav:collection:pages include_home="true" }}
-                            {{ if !hide_nav }}
-                                <li><a href="{{ url }}" class="menu-item text-gray-600 hover:text-gray-800 text-xl">{{ title }}</a></li>
-                            {{ /if }}
-                        {{ /nav:collection:pages }}
-                    </ul>
-                </div>
-            </nav>
+    <nav class="container-custom">
+        <div class="flex justify-between items-center h-16">
+            <!-- Logo/Name -->
+            <a href="/" class="text-2xl font-bold text-neutral-900 hover:text-primary-600 transition-colors">
+                David Childs
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center space-x-8">
+                {{ nav:collection:pages include_home="true" }}
+                    {{ if !hide_nav }}
+                        <a href="{{ url }}" class="menu-item text-neutral-600 hover:text-neutral-900 font-medium transition-colors">
+                            {{ title }}
+                        </a>
+                    {{ /if }}
+                {{ /nav:collection:pages }}
+            </div>
+            
+            <!-- Mobile menu button -->
+            <button type="button" class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500" x-data="{ open: false }" @click="open = !open">
+                <svg class="h-6 w-6" x-bind:class="{ 'hidden': open, 'block': !open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <svg class="h-6 w-6" x-bind:class="{ 'block': open, 'hidden': !open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
         </div>
+        
+        <!-- Mobile menu -->
+        <div class="md:hidden" x-data="{ open: false }" x-show="open" x-transition>
+            <div class="px-2 pt-2 pb-3 space-y-1 border-t border-neutral-200">
+                {{ nav:collection:pages include_home="true" }}
+                    {{ if !hide_nav }}
+                        <a href="{{ url }}" class="menu-item block px-3 py-2 rounded-md text-base font-medium text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100">
+                            {{ title }}
+                        </a>
+                    {{ /if }}
+                {{ /nav:collection:pages }}
+            </div>
+        </div>
+    </nav>

@@ -1,17 +1,17 @@
 {{ collection:heros id:not:id as="heros" }}
-    <div class="max-w-screen-xl mx-auto" x-data="{ heros: {{ heros | to_json | sanitize:true }} }">
+    <div x-data="{ heros: {{ heros | to_json | sanitize:true }} }">
         <template x-for="hero in heros.sort(() => .5 - Math.random()).slice(0, 1)" :key="hero.id">
-            <div>
+            <div class="animate-fade-in">
                 <!-- Display the hero's quote -->
-                <h1 class="text-4xl lg:text-5xl font-light text-center mb-6" x-html="hero.quote"></h1>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight" x-html="hero.quote"></h1>
                 
-                <!-- Quote attribution aligned to the right -->
-                <div class="text-2xl lg:text-3xl text-gray-500 mt-6 block text-right">
-                    <span x-text="hero.quote_attribution"></span>
+                <!-- Quote attribution -->
+                <div class="text-lg md:text-xl text-neutral-500 mb-8">
+                    <span x-text="'— ' + hero.quote_attribution"></span>
                 </div>
                 
-                <!-- Add margin-top to the content for spacing above -->
-                <p class="text-xl text-left text-gray-600 mx-auto mt-6" x-html="hero.content"></p> <!-- Adjust "mt-6" as needed -->
+                <!-- Content description -->
+                <p class="text-lg md:text-xl text-neutral-600 leading-relaxed max-w-3xl mx-auto" x-html="hero.content"></p>
             </div>
         </template>
     </div>

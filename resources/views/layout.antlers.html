@@ -14,32 +14,36 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {{ vite src="resources/js/site.js|resources/css/site.css" }}
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
         {{ socialize:css }}
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg">
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
         <link rel="manifest" href="/site.webmanifest">
+        <meta name="theme-color" content="#2563eb">
         {{ seo_pro:meta }}
     </head>
 
-    <body class="bg-tile-pattern bg-repeat bg-fixed">
+    <body class="bg-neutral-50 text-neutral-900">
         <!-- header -->
         {{ if !hide_nav }}
-            <header class="py-12 max-w-screen-xl mx-auto px-4"> <!-- Ensure header is limited -->
+            <header class="bg-white border-b border-neutral-200 sticky top-0 z-50">
                 {{ partial:nav }} 
             </header>
         {{ /if }}
             
         <!-- Main Section -->
-        <main class="pb-12 max-w-screen-xl mx-auto px-4"> <!-- Limit main content too -->
+        <main class="min-h-screen">
             {{ template_content }}
         </main>
 
         <!-- Footer -->
-        <footer class="bg-gray-800 text-white py-6"> <!-- Ensure footer padding -->
-            <div class="max-w-screen-xl mx-auto px-4"> <!-- Limit footer content width -->
+        <footer class="bg-white border-t border-neutral-200">
+            <div class="container-custom py-12">
                 {{ partial:footer }}
             </div>
         </footer>
@@ -54,8 +58,8 @@
             // Iterate through each menu item and check if it matches the current URL
             menuItems.forEach(item => {
                 if (item.getAttribute('href') === currentPath) {
-                    item.classList.remove('text-gray-600');  // Remove the default class
-                    item.classList.add('text-red-500');      // Add the active class
+                    item.classList.remove('text-neutral-600');
+                    item.classList.add('text-primary-600', 'font-medium');
                 }
             });
         </script>
