@@ -87,7 +87,7 @@ jobs:
             please
       
       - name: Copy archive to production server
-        uses: appleboy/scp-action@v0.1.7
+        uses: appleboy/scp-action@v1.0.0
         with:
           host: ${{ secrets.PROD_DEPLOY_HOST }}
           username: ${{ secrets.PROD_DEPLOY_USER }}
