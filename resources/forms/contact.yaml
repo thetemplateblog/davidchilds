@@ -1,0 +1,58 @@
+title: 'Contact Form'
+handle: contact
+fields:
+  -
+    handle: name
+    field:
+      display: Name
+      type: text
+      required: true
+      validate:
+        - required
+  -
+    handle: email
+    field:
+      display: Email
+      type: email
+      required: true
+      validate:
+        - required
+        - email
+  -
+    handle: subject
+    field:
+      display: Subject
+      type: text
+      required: true
+      validate:
+        - required
+  -
+    handle: message
+    field:
+      display: Message
+      type: textarea
+      required: true
+      validate:
+        - required
+        - min:10
+  -
+    handle: phone
+    field:
+      display: 'Phone Number (Optional)'
+      type: text
+      required: false
+email:
+  -
+    to: '{{ env:MAIL_TO_ADDRESS }}'
+    from: '{{ email }}'
+    reply_to: '{{ email }}'
+    subject: 'Contact Form Submission: {{ subject }}'
+    html: |
+      <h2>New Contact Form Submission</h2>
+      <p><strong>Name:</strong> {{ name }}</p>
+      <p><strong>Email:</strong> {{ email }}</p>
+      {{ if phone }}<p><strong>Phone:</strong> {{ phone }}</p>{{ /if }}
+      <p><strong>Subject:</strong> {{ subject }}</p>
+      <p><strong>Message:</strong></p>
+      <p>{{ message | nl2br }}</p>
+store: true
