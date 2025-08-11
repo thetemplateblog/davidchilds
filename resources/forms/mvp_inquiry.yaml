@@ -1,0 +1,108 @@
+title: 'MVP Validation Inquiry'
+handle: mvp_inquiry
+fields:
+  -
+    handle: name
+    field:
+      display: 'Full Name'
+      type: text
+      required: true
+      validate:
+        - required
+  -
+    handle: email
+    field:
+      display: 'Email Address'
+      type: email
+      required: true
+      validate:
+        - required
+        - email
+  -
+    handle: phone
+    field:
+      display: 'Phone Number (Optional)'
+      type: text
+      required: false
+  -
+    handle: validation_tier
+    field:
+      display: 'Which validation tier interests you?'
+      type: select
+      options:
+        week_test: 'Week Test'
+        month_sprint: 'Month Sprint'
+        quarter_launch: 'Quarter Launch'
+        not_sure: 'Not sure yet'
+      validate:
+        - required
+  -
+    handle: business_idea
+    field:
+      display: 'Describe your business idea (2-3 paragraphs)'
+      type: textarea
+      required: true
+      validate:
+        - required
+        - min:50
+      instructions: 'What problem are you solving? Who has this problem? How does your solution work?'
+  -
+    handle: target_customer
+    field:
+      display: 'Who is your target customer?'
+      type: textarea
+      required: true
+      validate:
+        - required
+      instructions: 'Describe demographics, current behavior, and pain points.'
+  -
+    handle: value_proposition
+    field:
+      display: 'What is your main value proposition?'
+      type: text
+      required: true
+      validate:
+        - required
+      instructions: 'Why would someone sign up? What is the primary benefit?'
+  -
+    handle: company_name
+    field:
+      display: 'Company/Product Name'
+      type: text
+      required: true
+      validate:
+        - required
+  -
+    handle: competitors
+    field:
+      display: 'List 3-5 competitors or alternatives'
+      type: textarea
+      required: false
+      instructions: 'Who else is solving this problem? What alternatives exist?'
+  -
+    handle: timeline
+    field:
+      display: 'When do you want to start?'
+      type: select
+      options:
+        immediately: 'Immediately'
+        this_week: 'This week'
+        next_week: 'Next week'
+        this_month: 'This month'
+        just_exploring: 'Just exploring'
+      validate:
+        - required
+  -
+    handle: budget_confirmed
+    field:
+      display: 'I understand the pricing and can pay upfront'
+      type: toggle
+      default: false
+  -
+    handle: additional_notes
+    field:
+      display: 'Any additional information?'
+      type: textarea
+      required: false
+
+store: true

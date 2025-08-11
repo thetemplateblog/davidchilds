@@ -1,0 +1,161 @@
+name: Deploy to Development
+
+on:
+  push:
+    branches: [development, develop]
+  workflow_dispatch: # Manual trigger
+
+jobs:
+  build-and-deploy-dev:
+    runs-on: ubuntu-latest
+    environment: development
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, mysql
+          coverage: none
+          tools: composer:v2
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+      
+      - name: Cache composer dependencies
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+      
+      - name: Install PHP dependencies
+        run: composer install --optimize-autoloader --no-interaction
+      
+      - name: Install Node dependencies
+        run: npm ci
+      
+      - name: Build assets (development)
+        run: npm run build
+        env:
+          NODE_ENV: development
+      
+      - name: Create deployment archive
+        run: |
+          tar -czf deploy.tar.gz \
+            --exclude=node_modules \
+            --exclude=.git \
+            --exclude=.github \
+            --exclude=.env \
+            --exclude=storage/logs/* \
+            --exclude=storage/framework/cache/* \
+            --exclude=storage/framework/sessions/* \
+            --exclude=storage/framework/testing/* \
+            --exclude=storage/framework/views/* \
+            --exclude=database/*.sqlite \
+            app \
+            bootstrap \
+            config \
+            content \
+            database \
+            lang \
+            public \
+            resources \
+            routes \
+            storage \
+            tests \
+            vendor \
+            composer.json \
+            composer.lock \
+            package.json \
+            package-lock.json \
+            artisan \
+            please
+      
+      - name: Copy archive to development server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.DEV_DEPLOY_HOST }}
+          username: ${{ secrets.DEV_DEPLOY_USER }}
+          key: ${{ secrets.DEV_DEPLOY_SSH_KEY }}
+          source: "deploy.tar.gz"
+          target: "/tmp"
+      
+      - name: Deploy to development server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.DEV_DEPLOY_HOST }}
+          username: ${{ secrets.DEV_DEPLOY_USER }}
+          key: ${{ secrets.DEV_DEPLOY_SSH_KEY }}
+          script: |
+            cd ${{ secrets.DEV_DEPLOY_PATH }}
+            
+            # Simple backup for dev
+            if [ -d "app" ]; then
+              rm -rf app.backup
+              cp -r app app.backup
+            fi
+            
+            # Extract new deployment
+            tar -xzf /tmp/deploy.tar.gz
+            
+            # Ensure proper permissions
+            chmod -R 775 storage bootstrap/cache
+            chown -R www-data:www-data storage bootstrap/cache
+            
+            # Copy environment file if it doesn't exist
+            if [ ! -f .env ]; then
+              echo "ERROR: .env file not found. Please create it first."
+              exit 1
+            fi
+            
+            # Clear all caches (development)
+            php artisan config:clear
+            php artisan cache:clear
+            php artisan view:clear
+            php artisan route:clear
+            php artisan debugbar:clear
+            
+            # Run migrations
+            php artisan migrate
+            
+            # Clear and warm Statamic caches
+            php please cache:clear
+            php please stache:warm
+            
+            # Reload PHP-FPM
+            if command -v php-fpm &> /dev/null; then
+              sudo systemctl reload php8.2-fpm 2>/dev/null || sudo systemctl reload php-fpm
+            fi
+            
+            # Reload web server
+            if systemctl is-active --quiet nginx; then
+              sudo nginx -t && sudo systemctl reload nginx
+            elif systemctl is-active --quiet apache2; then
+              sudo apache2ctl -t && sudo systemctl reload apache2
+            fi
+            
+            # Cleanup
+            rm /tmp/deploy.tar.gz
+            rm -rf app.backup
+            
+            echo "✅ Development deployment completed!"
+      
+      - name: Notify deployment status
+        if: always()
+        run: |
+          if [ "${{ job.status }}" == "success" ]; then
+            echo "🚀 Development deployment successful!"
+          else
+            echo "❌ Development deployment failed!"
+          fi

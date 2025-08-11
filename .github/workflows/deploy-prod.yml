@@ -1,0 +1,222 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # Manual trigger with approval
+
+jobs:
+  build-and-deploy-prod:
+    runs-on: ubuntu-latest
+    environment: production # Requires manual approval
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, mysql
+          coverage: none
+          tools: composer:v2
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+      
+      - name: Cache composer dependencies
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+      
+      - name: Install PHP dependencies
+        run: composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
+      
+      - name: Install Node dependencies
+        run: npm ci
+      
+      - name: Build assets
+        run: npm run build
+      
+      - name: Run tests
+        run: php artisan test --parallel
+        continue-on-error: false # Stop deployment if tests fail
+      
+      - name: Create deployment archive
+        run: |
+          # Create deployment package
+          tar -czf deploy.tar.gz \
+            --exclude=node_modules \
+            --exclude=.git \
+            --exclude=.github \
+            --exclude=tests \
+            --exclude=.env \
+            --exclude=storage/logs/* \
+            --exclude=storage/framework/cache/* \
+            --exclude=storage/framework/sessions/* \
+            --exclude=storage/framework/testing/* \
+            --exclude=storage/framework/views/* \
+            --exclude=storage/app/backups/* \
+            --exclude=database/*.sqlite \
+            app \
+            bootstrap \
+            config \
+            content \
+            database \
+            lang \
+            public \
+            resources \
+            routes \
+            storage \
+            vendor \
+            composer.json \
+            composer.lock \
+            package.json \
+            package-lock.json \
+            artisan \
+            please
+      
+      - name: Copy archive to production server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.PROD_DEPLOY_HOST }}
+          username: ${{ secrets.PROD_DEPLOY_USER }}
+          key: ${{ secrets.PROD_DEPLOY_SSH_KEY }}
+          source: "deploy.tar.gz"
+          target: "/tmp"
+      
+      - name: Deploy to production server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.PROD_DEPLOY_HOST }}
+          username: ${{ secrets.PROD_DEPLOY_USER }}
+          key: ${{ secrets.PROD_DEPLOY_SSH_KEY }}
+          script: |
+            cd ${{ secrets.PROD_DEPLOY_PATH }}
+            
+            # Create timestamped backup
+            BACKUP_DIR="backups/$(date +%Y%m%d_%H%M%S)"
+            mkdir -p $BACKUP_DIR
+            
+            # Backup current deployment (if exists)
+            if [ -d "app" ]; then
+              echo "Creating backup at $BACKUP_DIR"
+              tar -czf $BACKUP_DIR/backup.tar.gz \
+                --exclude=vendor \
+                --exclude=node_modules \
+                --exclude=storage/logs/* \
+                --exclude=storage/framework/cache/* \
+                app config content database public resources routes
+              cp .env $BACKUP_DIR/.env.backup 2>/dev/null || true
+            fi
+            
+            # Extract new deployment
+            tar -xzf /tmp/deploy.tar.gz
+            
+            # Ensure proper permissions for storage and cache
+            chmod -R 775 storage bootstrap/cache
+            chown -R www-data:www-data storage bootstrap/cache
+            
+            # Copy environment file if it doesn't exist
+            if [ ! -f .env ]; then
+              echo "ERROR: .env file not found. Please create it first."
+              exit 1
+            fi
+            
+            # Clear and rebuild caches
+            php artisan config:clear
+            php artisan cache:clear
+            php artisan view:clear
+            php artisan route:clear
+            
+            # Cache configuration for production
+            php artisan config:cache
+            php artisan route:cache
+            php artisan view:cache
+            php artisan statamic:stache:warm
+            
+            # Run database migrations
+            php artisan migrate --force
+            
+            # Clear and warm Statamic caches
+            php please cache:clear
+            php please stache:warm
+            php please static:clear
+            
+            # Set up queue worker if needed
+            if systemctl is-active --quiet statamic-queue; then
+              sudo systemctl restart statamic-queue
+            fi
+            
+            # Reload PHP-FPM for changes to take effect
+            if command -v php-fpm &> /dev/null; then
+              sudo systemctl reload php8.2-fpm 2>/dev/null || sudo systemctl reload php-fpm
+            fi
+            
+            # Reload web server
+            if systemctl is-active --quiet nginx; then
+              sudo nginx -t && sudo systemctl reload nginx
+            elif systemctl is-active --quiet apache2; then
+              sudo apache2ctl -t && sudo systemctl reload apache2
+            fi
+            
+            # Cleanup
+            rm /tmp/deploy.tar.gz
+            
+            # Keep only last 5 backups
+            cd backups && ls -t | tail -n +6 | xargs -r rm -rf
+            
+            echo "✅ Production deployment completed!"
+            echo "📦 Backup available at: $BACKUP_DIR"
+      
+      - name: Run smoke tests
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.PROD_DEPLOY_HOST }}
+          username: ${{ secrets.PROD_DEPLOY_USER }}
+          key: ${{ secrets.PROD_DEPLOY_SSH_KEY }}
+          script: |
+            # Wait for services to fully start
+            echo "Waiting for services to initialize..."
+            sleep 5
+            
+            # Health check with retries
+            for i in {1..3}; do
+              HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" ${{ secrets.PROD_SITE_URL }})
+              if [ "$HTTP_CODE" = "200" ]; then
+                echo "✅ Health check passed! (HTTP $HTTP_CODE)"
+                
+                # Check Statamic CP access
+                CP_CODE=$(curl -s -o /dev/null -w "%{http_code}" ${{ secrets.PROD_SITE_URL }}/cp)
+                if [ "$CP_CODE" = "200" ] || [ "$CP_CODE" = "302" ]; then
+                  echo "✅ Statamic CP is accessible (HTTP $CP_CODE)"
+                fi
+                
+                exit 0
+              else
+                echo "Attempt $i failed (HTTP $HTTP_CODE), waiting 10 seconds..."
+                sleep 10
+              fi
+            done
+            
+            echo "❌ Health check failed after 3 attempts"
+            exit 1
+      
+      - name: Notify deployment status
+        if: always()
+        run: |
+          if [ "${{ job.status }}" == "success" ]; then
+            echo "🎉 Production deployment successful!"
+          else
+            echo "❌ Production deployment failed! Check logs and rollback if needed."
+          fi
