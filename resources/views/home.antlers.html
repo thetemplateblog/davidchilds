@@ -1,63 +1,145 @@
-<style>
-    html {
-      overflow-y: scroll; /* Prevent jump caused by appearing/disappearing scrollbar */
-    }
-  </style>
-  
-  <div class="max-w-screen-xl mx-auto px-4 lg:px-8"> <!-- Consistent padding is applied -->
-      <!-- Hero Section -->
-      <section class="py-100">
-          {{ partial:hero }}
-      </section>
-  
-      <div class="max-w-screen-xl mx-auto">
-          <hr class="w-full border-t border-gray-300 mt-8">
-      </div>
-  
-      <!-- Image Section (Consistent Grid for Columns) -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12">
-          <!-- About Me -->
-          <div>
-              <h4 class="text-xl lg:text-2xl font-light mb-4">About Me</h4>
-              <p class="mb-4 text-gray-600">Hey there! I'm David Childs,</p>
-              <p class="mb-4 text-gray-600">I'm excited to share a bit about myself with you. Grab a seat, and let's dive into my world of tech, problem-solving, and writing!</p>
-              <p class="mb-4 text-gray-600">I'm a Consulting Systems Engineer, which is a fancy way of saying I'm the go-to person for managing computer systems and data centers in big companies.</p>
-              <p class="mb-4 text-gray-600">Think of me as a behind-the-scenes superhero for technology!</p>
+<!-- Hero Section -->
+<section class="bg-white">
+    <div class="container-custom section-padding">
+        <div class="max-w-4xl mx-auto text-center">
+            {{ partial:hero }}
+        </div>
+    </div>
+</section>
 
-              <!-- Button Below Image -->
-              <div class="flex justify-left">
-                  <a href="{{ permalink }}/writing/about-me" class="inline-block bg-black text-white py-1 px-4 hover:bg-gray-800">Read more</a>
-              </div>
-          </div>
-  
-            <!-- Projects Section -->
+<!-- About & Skills Section -->
+<section class="bg-white">
+    <div class="container-custom section-padding">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <!-- About Content -->
             <div>
-                <h4 class="text-xl lg:text-2xl font-light mb-4">Writing Projects</h4>
-                <p class="mb-4 text-gray-600">I specialize in making technical concepts approachable.</p>
-                <p class="mb-4 text-gray-600">Whether it's writing clear documentation or step-by-step tutorials, I ensure accuracy while keeping things simple for readers.</p>
-                <p class="mb-4 text-gray-600">From engineering guides to cloud computing, my focus is on helping others understand complex topics.</p>
-                <p class="mb-4 text-gray-600">I find great satisfaction in simplifying technical information, making it accessible without losing its complexity or depth.</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">About Me</h2>
+                <div class="space-y-4 text-neutral-600">
+                    <p>Hey there! I'm David Childs, a Consulting Systems Engineer passionate about making technology work for people.</p>
+                    <p>I specialize in managing computer systems and data centers for enterprise organizations. Think of me as a behind-the-scenes architect ensuring your technology infrastructure runs smoothly and efficiently.</p>
+                    <p>With over a decade of experience, I've helped organizations transform their technical operations, implement robust solutions, and navigate complex technological challenges.</p>
                 </div>
+                <a href="{{ permalink }}/writing/about-me" class="btn-primary mt-8">
+                    Learn More About Me
+                </a>
+            </div>
+            
+            <!-- Skills Grid -->
+            <div class="grid grid-cols-2 gap-4">
+                <a href="/categories/devops" class="card p-6 hover:shadow-md transition-shadow duration-200 block">
+                    <h3 class="font-semibold text-lg mb-2">DevOps</h3>
+                    <p class="text-sm text-neutral-600">CI/CD pipelines and automation</p>
+                </a>
+                <a href="/categories/aws" class="card p-6 hover:shadow-md transition-shadow duration-200 block">
+                    <h3 class="font-semibold text-lg mb-2">AWS</h3>
+                    <p class="text-sm text-neutral-600">Cloud architecture and services</p>
+                </a>
+                <a href="/categories/git" class="card p-6 hover:shadow-md transition-shadow duration-200 block">
+                    <h3 class="font-semibold text-lg mb-2">Git</h3>
+                    <p class="text-sm text-neutral-600">Version control best practices</p>
+                </a>
+                <a href="/categories/ai" class="card p-6 hover:shadow-md transition-shadow duration-200 block">
+                    <h3 class="font-semibold text-lg mb-2">AI</h3>
+                    <p class="text-sm text-neutral-600">Machine learning and automation</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 
-          <!-- Latest Posts -->
-          <div>
-              {{ partial:latest_posts_front }}
-          </div>
-      </div>
-  </div>
-  
-  <!-- Divider Line Under Pictures (Full Width Line) -->
-  <div class="max-w-screen-xl mx-auto px-4 lg:px-8"> <!-- Consistent padding -->
-      <hr class="w-full border-t border-gray-300 mt-8">
-  </div>
-  
-  <!-- Latest Article Section (Reduced Space Above) -->
-  <section class="pt-8">
-      <div class="max-w-screen-xl mx-auto px-4 lg:px-8"> <!-- Consistent padding -->
-          <div>
-              <h3 class="text-2xl font-light mb-4">Latest article</h3>
-              {{ partial:latest_post }}
-          </div>
-      </div>
-  </section>
-  
+<!-- Writing Projects Section -->
+<section class="bg-neutral-50">
+    <div class="container-custom section-padding">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Writing & Projects</h2>
+            <p class="text-xl text-neutral-600 max-w-2xl mx-auto">
+                I write about technology, systems engineering, and share insights from my experience in the field.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="card group hover:shadow-lg transition-all duration-300">
+                <div class="p-8">
+                    <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-200 transition-colors">
+                        <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Infrastructure & DevOps</h3>
+                    <p class="text-neutral-600 mb-4">Kubernetes, Docker, CI/CD pipelines, and infrastructure as code</p>
+                    <a href="/writing/categories/devops" class="text-primary-600 font-medium hover:text-primary-700">
+                        Explore DevOps →
+                    </a>
+                </div>
+            </div>
+            
+            <div class="card group hover:shadow-lg transition-all duration-300">
+                <div class="p-8">
+                    <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-200 transition-colors">
+                        <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Cloud Architecture</h3>
+                    <p class="text-neutral-600 mb-4">AWS, Azure, GCP design patterns and best practices</p>
+                    <a href="/writing/categories/cloud" class="text-primary-600 font-medium hover:text-primary-700">
+                        Read Cloud Guides →
+                    </a>
+                </div>
+            </div>
+            
+            <div class="card group hover:shadow-lg transition-all duration-300">
+                <div class="p-8">
+                    <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-200 transition-colors">
+                        <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Security & Compliance</h3>
+                    <p class="text-neutral-600 mb-4">Zero-trust architecture, security automation, and compliance frameworks</p>
+                    <a href="/writing/categories/security" class="text-primary-600 font-medium hover:text-primary-700">
+                        Security Articles →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Latest Articles Section -->
+<section class="bg-white">
+    <div class="container-custom section-padding">
+        <div class="flex justify-between items-center mb-8">
+            <h2 class="text-3xl md:text-4xl font-bold">Latest Articles</h2>
+            <a href="/writing" class="text-primary-600 font-medium hover:text-primary-700">
+                View All →
+            </a>
+        </div>
+        
+        <div class="space-y-6">
+            {{ partial:latest_posts_front }}
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="bg-primary-600">
+    <div class="container-custom py-16">
+        <div class="text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+                Let's Work Together
+            </h2>
+            <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+                Looking for expert guidance on your technical infrastructure? I'm here to help.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/contact" class="btn-secondary bg-white text-primary-600 hover:bg-primary-50">
+                    Get in Touch
+                </a>
+                <a href="/writing" class="btn-secondary bg-transparent text-white border-white hover:bg-primary-700">
+                    Read My Work
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

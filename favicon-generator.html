@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favicon Generator - DC</title>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            max-width: 800px;
+            width: 100%;
+        }
+        
+        h1 {
+            margin: 0 0 30px 0;
+            color: #171717;
+        }
+        
+        .favicon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .favicon-item {
+            text-align: center;
+        }
+        
+        .favicon-canvas {
+            margin: 0 auto 10px;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .favicon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            border-radius: 20%;
+        }
+        
+        /* Design 1: Gradient Background with Initials */
+        .design-1 {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+        }
+        
+        /* Design 2: Solid Blue with White Text */
+        .design-2 {
+            background: #2563eb;
+            color: white;
+        }
+        
+        /* Design 3: White with Blue Text and Border */
+        .design-3 {
+            background: white;
+            color: #2563eb;
+            border: 3px solid #2563eb;
+        }
+        
+        /* Design 4: Dark Background */
+        .design-4 {
+            background: #171717;
+            color: #3b82f6;
+        }
+        
+        /* Design 5: Minimalist with First Initial */
+        .design-5 {
+            background: #3b82f6;
+            color: white;
+            font-family: 'Georgia', serif;
+        }
+        
+        /* Design 6: Circle Design */
+        .design-6 {
+            background: white;
+            color: #2563eb;
+            border: 3px solid #2563eb;
+            border-radius: 50%;
+        }
+        
+        .label {
+            color: #737373;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        
+        .instructions {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        
+        .instructions h2 {
+            margin-top: 0;
+            color: #374151;
+            font-size: 18px;
+        }
+        
+        .instructions ol {
+            margin: 10px 0;
+            padding-left: 20px;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+        
+        .instructions code {
+            background: #fff;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            border: 1px solid #e5e7eb;
+        }
+        
+        button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-right: 10px;
+            transition: background 0.2s;
+        }
+        
+        button:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Favicon Designs for David Childs</h1>
+        
+        <div class="favicon-grid">
+            <!-- Design 1 -->
+            <div class="favicon-item">
+                <div class="favicon-canvas" style="width: 128px; height: 128px;">
+                    <div class="favicon design-1" style="width: 128px; height: 128px; font-size: 48px;">
+                        DC
+                    </div>
+                </div>
+                <div class="label">Gradient Modern</div>
+            </div>
+            
+            <!-- Design 2 -->
+            <div class="favicon-item">
+                <div class="favicon-canvas" style="width: 128px; height: 128px;">
+                    <div class="favicon design-2" style="width: 128px; height: 128px; font-size: 48px;">
+                        DC
+                    </div>
+                </div>
+                <div class="label">Solid Blue</div>
+            </div>
+            
+            <!-- Design 3 -->
+            <div class="favicon-item">
+                <div class="favicon-canvas" style="width: 128px; height: 128px;">
+                    <div class="favicon design-3" style="width: 122px; height: 122px; font-size: 48px;">
+                        DC
+                    </div>
+                </div>
+                <div class="label">Outlined</div>
+            </div>
+            
+            <!-- Design 4 -->
+            <div class="favicon-item">
+                <div class="favicon-canvas" style="width: 128px; height: 128px;">
+                    <div class="favicon design-4" style="width: 128px; height: 128px; font-size: 48px;">
+                        DC
+                    </div>
+                </div>
+                <div class="label">Dark Mode</div>
+            </div>
+            
+            <!-- Design 5 -->
+            <div class="favicon-item">
+                <div class="favicon-canvas" style="width: 128px; height: 128px;">
+                    <div class="favicon design-5" style="width: 128px; height: 128px; font-size: 72px;">
+                        D
+                    </div>
+                </div>
+                <div class="label">Single Letter</div>
+            </div>
+            
+            <!-- Design 6 -->
+            <div class="favicon-item">
+                <div class="favicon-canvas" style="width: 128px; height: 128px;">
+                    <div class="favicon design-6" style="width: 122px; height: 122px; font-size: 48px;">
+                        DC
+                    </div>
+                </div>
+                <div class="label">Circle Badge</div>
+            </div>
+        </div>
+        
+        <div class="preview-sizes">
+            <h2 style="margin-bottom: 20px; color: #171717;">Size Preview (Design 2)</h2>
+            <div style="display: flex; gap: 20px; align-items: flex-end;">
+                <div>
+                    <div class="favicon-canvas" style="width: 16px; height: 16px;">
+                        <div class="favicon design-2" style="width: 16px; height: 16px; font-size: 8px; border-radius: 2px;">
+                            DC
+                        </div>
+                    </div>
+                    <div class="label">16x16</div>
+                </div>
+                <div>
+                    <div class="favicon-canvas" style="width: 32px; height: 32px;">
+                        <div class="favicon design-2" style="width: 32px; height: 32px; font-size: 12px; border-radius: 4px;">
+                            DC
+                        </div>
+                    </div>
+                    <div class="label">32x32</div>
+                </div>
+                <div>
+                    <div class="favicon-canvas" style="width: 48px; height: 48px;">
+                        <div class="favicon design-2" style="width: 48px; height: 48px; font-size: 18px; border-radius: 6px;">
+                            DC
+                        </div>
+                    </div>
+                    <div class="label">48x48</div>
+                </div>
+                <div>
+                    <div class="favicon-canvas" style="width: 64px; height: 64px;">
+                        <div class="favicon design-2" style="width: 64px; height: 64px; font-size: 24px; border-radius: 8px;">
+                            DC
+                        </div>
+                    </div>
+                    <div class="label">64x64</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h2>How to Create Your Favicon:</h2>
+            <ol>
+                <li>Choose your preferred design from above</li>
+                <li>Take a screenshot of the 128x128 version</li>
+                <li>Go to <code>https://realfavicongenerator.net</code> or <code>https://favicon.io</code></li>
+                <li>Upload your screenshot and generate all required sizes</li>
+                <li>Download the favicon package and replace the files in your public folder</li>
+            </ol>
+            
+            <h2 style="margin-top: 20px;">Quick Canvas Export:</h2>
+            <button onclick="downloadFavicon(1)">Download Design 1</button>
+            <button onclick="downloadFavicon(2)">Download Design 2</button>
+            <button onclick="downloadFavicon(3)">Download Design 3</button>
+        </div>
+    </div>
+    
+    <script>
+        function downloadFavicon(designNumber) {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 512;
+            canvas.height = 512;
+            
+            // Set background based on design
+            if (designNumber === 1) {
+                // Gradient
+                const gradient = ctx.createLinearGradient(0, 0, 512, 512);
+                gradient.addColorStop(0, '#3b82f6');
+                gradient.addColorStop(1, '#2563eb');
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, 512, 512);
+                ctx.fillStyle = 'white';
+            } else if (designNumber === 2) {
+                // Solid blue
+                ctx.fillStyle = '#2563eb';
+                ctx.fillRect(0, 0, 512, 512);
+                ctx.fillStyle = 'white';
+            } else if (designNumber === 3) {
+                // White with border
+                ctx.fillStyle = 'white';
+                ctx.fillRect(0, 0, 512, 512);
+                ctx.strokeStyle = '#2563eb';
+                ctx.lineWidth = 20;
+                ctx.strokeRect(10, 10, 492, 492);
+                ctx.fillStyle = '#2563eb';
+            }
+            
+            // Add rounded corners (optional)
+            // Would require more complex clipping path
+            
+            // Draw text
+            ctx.font = 'bold 200px Inter, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('DC', 256, 256);
+            
+            // Download
+            canvas.toBlob(function(blob) {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `favicon-design-${designNumber}.png`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+        }
+    </script>
+</body>
+</html>

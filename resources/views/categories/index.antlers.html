@@ -1,34 +1,37 @@
-<style>
-    html {
-      overflow-y: scroll; /* Prevent jump caused by appearing/disappearing scrollbar */
-    }
-  </style>
-  
-  <div class="max-w-screen-xl mx-auto px-4 lg:px-8"> <!-- Consistent padding applied here -->
-  
-      <!-- Hero Section -->
-      <section class="py-100">
-          {{ partial:hero }}
-      </section>
-      <section class="py-100"></section>
-        {{ partial:categories_inline }}
-    </section>
-      <!-- Line under Hero Section -->
-      <div class="max-w-screen-xl mx-auto">
-          <hr class="w-full border-t border-gray-300 mt-8">
-      </div>
-  
-      <!-- Blog Content Section (Consistent layout using flex and spacing) -->
-      <div class="lg:flex lg:space-x-8 pt-12">
-  
-          <!-- Blog Posts Section -->
-          <div class="space-y-8">
-              <!-- Blog Post 1 -->
-            {{ categories  }} 
-              <li><a href=" {{  url  }} " class="text-red-500 hover:text-red-700"> {{  title  }} </a></li> 
-            {{  /categories  }}
-          </div>
-  
-          </div>
-  </div>
-  
+<!-- Categories Header -->
+<section class="bg-white border-b border-neutral-200">
+    <div class="container-custom py-16">
+        <div class="max-w-3xl">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Categories</h1>
+            <p class="text-xl text-neutral-600">
+                Browse articles by topic to find exactly what you're looking for.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Categories Grid -->
+<section class="bg-white">
+    <div class="container-custom py-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {{ taxonomy:categories }}
+                <a href="{{ url }}" class="card hover:shadow-lg transition-all duration-300 block">
+                    <div class="p-6">
+                        <h2 class="text-xl font-bold mb-2 text-neutral-900">{{ title }}</h2>
+                        {{ if content }}
+                            <p class="text-sm text-neutral-600 mb-3">{{ content | safe_truncate:100 }}</p>
+                        {{ /if }}
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-neutral-500">
+                                {{ entries | length }} {{ entries | length == 1 ? 'article' : 'articles' }}
+                            </span>
+                            <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+            {{ /taxonomy:categories }}
+        </div>
+    </div>
+</section>
