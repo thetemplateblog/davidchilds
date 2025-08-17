@@ -8,5 +8,8 @@ template: landing
 updated_by: 443cb49f-b30a-4e19-8c4a-fc72691de37d
 updated_at: 1754327875
 hide_nav: true
+seo:
+  title: '52 Weeks of DevOps - Year-Long Learning Journey'
+  description: 'Master DevOps in 52 weeks with weekly tutorials on CI/CD, automation, cloud infrastructure, containers, and monitoring. Transform your development workflow.'
 ---
 52 Weeks of DevOps provides a comprehensive, week-by-week journey to mastering DevOps practices. Dive into automation, continuous integration and delivery (CI/CD), cloud infrastructure, containerization, monitoring, security, and more. Whether you're a beginner or an experienced engineer, our weekly tutorials, guides, and best practices will help you transform your development workflows, improve collaboration, and streamline operations. Learn to automate deployment pipelines, manage infrastructure as code, and leverage powerful tools like Docker, Kubernetes, and Jenkins. Over the course of a year, you'll gain the skills needed to enhance efficiency, scalability, and reliability in your software development and operations.

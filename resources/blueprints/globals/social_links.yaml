@@ -1,0 +1,55 @@
+title: 'Social Links'
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: linkedin_url
+        field:
+          display: 'LinkedIn URL'
+          type: text
+          input_type: url
+          placeholder: 'https://linkedin.com/in/username'
+          instructions: 'Enter your full LinkedIn profile URL'
+          validate:
+            - url
+      -
+        handle: twitter_url
+        field:
+          display: 'Twitter/X URL'
+          type: text
+          input_type: url
+          placeholder: 'https://twitter.com/username'
+          instructions: 'Enter your full Twitter/X profile URL'
+          validate:
+            - url
+      -
+        handle: github_url
+        field:
+          display: 'GitHub URL'
+          type: text
+          input_type: url
+          placeholder: 'https://github.com/username'
+          instructions: 'Enter your full GitHub profile URL'
+          validate:
+            - url
+      -
+        handle: youtube_url
+        field:
+          display: 'YouTube URL'
+          type: text
+          input_type: url
+          placeholder: 'https://youtube.com/@username'
+          instructions: 'Enter your YouTube channel URL (optional)'
+          validate:
+            - url
+      -
+        handle: instagram_url
+        field:
+          display: 'Instagram URL'
+          type: text
+          input_type: url
+          placeholder: 'https://instagram.com/username'
+          instructions: 'Enter your Instagram profile URL (optional)'
+          validate:
+            - url

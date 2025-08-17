@@ -1,5 +1,6 @@
 title: 'Contact Form'
 handle: contact
+honeypot: winnie
 fields:
   -
     handle: name
@@ -13,7 +14,8 @@ fields:
     handle: email
     field:
       display: Email
-      type: email
+      type: text
+      input_type: email
       required: true
       validate:
         - required
@@ -30,29 +32,41 @@ fields:
     handle: message
     field:
       display: Message
-      type: textarea
+      type: bard
       required: true
       validate:
         - required
-        - min:10
+      buttons:
+        - bold
+        - italic
+        - underline
+        - unorderedlist
+        - orderedlist
+        - removeformat
+        - quote
+        - link
+      save_html: true
+      toolbar_mode: fixed
+      link_noopener: true
+      link_noreferrer: true
+      target_blank: true
+      reading_time: false
+      fullscreen: true
+      allow_source: false
+      enable_input_rules: true
+      enable_paste_rules: true
   -
     handle: phone
     field:
       display: 'Phone Number (Optional)'
       type: text
       required: false
+store: true
 email:
   -
-    to: '{{ env:MAIL_TO_ADDRESS }}'
-    from: '{{ email }}'
+    to: '{{ config:mail.to_address }}'
+    from: '{{ config:mail.from_address }}'
     reply_to: '{{ email }}'
     subject: 'Contact Form Submission: {{ subject }}'
-    html: |
-      <h2>New Contact Form Submission</h2>
-      <p><strong>Name:</strong> {{ name }}</p>
-      <p><strong>Email:</strong> {{ email }}</p>
-      {{ if phone }}<p><strong>Phone:</strong> {{ phone }}</p>{{ /if }}
-      <p><strong>Subject:</strong> {{ subject }}</p>
-      <p><strong>Message:</strong></p>
-      <p>{{ message | nl2br }}</p>
-store: true
+    html: emails/contact
+    text: emails/contact_text

@@ -113,4 +113,15 @@ return [
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | "To" Address
+    |--------------------------------------------------------------------------
+    |
+    | This is the default recipient address for contact forms and notifications.
+    |
+    */
+
+    'to_address' => env('MAIL_TO_ADDRESS', 'contact@example.com'),
+
 ];

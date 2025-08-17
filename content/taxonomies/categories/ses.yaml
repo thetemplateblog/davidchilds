@@ -1,5 +1,5 @@
 title: SES
-content: 'Amazon Simple Email Service (SES) is a cloud-based email service enabling high-volume, cost-effective email communications with features like DKIM authentication, delivery tracking, and SMTP integration. It supports both transactional and marketing emails with built-in scalability and deliverability management.'
+content: 'Amazon SES email service guides. Send transactional and marketing emails at scale with high deliverability and cost-effectiveness.'
 author: 443cb49f-b30a-4e19-8c4a-fc72691de37d
 updated_by: 443cb49f-b30a-4e19-8c4a-fc72691de37d
 updated_at: 1730074997

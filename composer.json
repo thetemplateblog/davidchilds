@@ -24,7 +24,7 @@
         "laravel/tinker": "^2.9",
         "mitydigital/statamic-two-factor": "^2.2",
         "statamic/cms": "^5.0",
-        "statamic/seo-pro": "dev-master"
+        "statamic/seo-pro": "dev-master as dev-master"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.8.1",

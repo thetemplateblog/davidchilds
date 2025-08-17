@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b602f2f3ff59738441ff29949c4291ea",
+    "content-hash": "0af6f4f0a2e6c542577c349a1d52d2e0",
     "packages": [
         {
             "name": "ajthinking/archetype",
@@ -5233,12 +5233,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thetemplateblog/seo-pro.git",
-                "reference": "c17444b5167d53c187803be62e7b158e85a57dfb"
+                "reference": "fa22390bca8a837cd2bec5280cc6df42998ae57e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thetemplateblog/seo-pro/zipball/c17444b5167d53c187803be62e7b158e85a57dfb",
-                "reference": "c17444b5167d53c187803be62e7b158e85a57dfb",
+                "url": "https://api.github.com/repos/thetemplateblog/seo-pro/zipball/fa22390bca8a837cd2bec5280cc6df42998ae57e",
+                "reference": "fa22390bca8a837cd2bec5280cc6df42998ae57e",
                 "shasum": ""
             },
             "require": {
@@ -5275,7 +5275,7 @@
             "support": {
                 "source": "https://github.com/thetemplateblog/seo-pro/tree/master"
             },
-            "time": "2025-08-04T18:50:30+00:00"
+            "time": "2025-08-15T11:02:58+00:00"
         },
         {
             "name": "statamic/stringy",
@@ -10955,7 +10955,14 @@
             "time": "2024-03-03T12:36:25+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "statamic/seo-pro",
+            "version": "9999999-dev",
+            "alias": "dev-master",
+            "alias_normalized": "dev-master"
+        }
+    ],
     "minimum-stability": "dev",
     "stability-flags": {
         "statamic/seo-pro": 20

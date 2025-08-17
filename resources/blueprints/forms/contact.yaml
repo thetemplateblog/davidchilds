@@ -1,0 +1,45 @@
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: name
+        field:
+          display: Name
+          type: text
+          required: true
+          validate:
+            - required
+      -
+        handle: email
+        field:
+          display: Email
+          type: text
+          input_type: email
+          required: true
+          validate:
+            - required
+            - email
+      -
+        handle: phone
+        field:
+          display: 'Phone Number'
+          type: text
+          required: false
+      -
+        handle: subject
+        field:
+          display: Subject
+          type: text
+          required: true
+          validate:
+            - required
+      -
+        handle: message
+        field:
+          display: Message
+          type: textarea
+          required: true
+          validate:
+            - required
+            - min:10
