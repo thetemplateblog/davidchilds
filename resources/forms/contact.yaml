@@ -32,29 +32,13 @@ fields:
     handle: message
     field:
       display: Message
-      type: bard
+      type: textarea
       required: true
       validate:
         - required
-      buttons:
-        - bold
-        - italic
-        - underline
-        - unorderedlist
-        - orderedlist
-        - removeformat
-        - quote
-        - link
-      save_html: true
-      toolbar_mode: fixed
-      link_noopener: true
-      link_noreferrer: true
-      target_blank: true
-      reading_time: false
-      fullscreen: true
-      allow_source: false
-      enable_input_rules: true
-      enable_paste_rules: true
+        - min:10
+      character_limit: 5000
+      rows: 8
   -
     handle: phone
     field:

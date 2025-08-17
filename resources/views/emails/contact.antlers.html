@@ -44,6 +44,16 @@
             border-radius: 6px;
             border: 1px solid #e5e7eb;
         }
+        .message-content {
+            color: #1f2937;
+            line-height: 1.6;
+        }
+        .message-content p {
+            margin: 0 0 1em 0;
+        }
+        .message-content p:last-child {
+            margin-bottom: 0;
+        }
         .footer {
             margin-top: 30px;
             padding-top: 20px;
@@ -66,7 +76,9 @@
                     {{ if handle == 'email' }}
                         <a href="mailto:{{ value }}">{{ value }}</a>
                     {{ elseif handle == 'message' }}
-                        {{ value | raw }}
+                        <div class="message-content">
+                            {{ value | nl2br | raw }}
+                        </div>
                     {{ else }}
                         {{ value }}
                     {{ /if }}

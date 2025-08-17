@@ -2,8 +2,16 @@ NEW CONTACT FORM SUBMISSION
 ============================
 
 {{ fields }}
-{{ if value && fieldtype != 'spacer' }}{{ display }}: {{ value }}
+{{ if value && fieldtype != 'spacer' }}
+{{ if handle != 'message' }}{{ display }}: {{ value }}
 {{ /if }}
+{{ /if }}
+{{ /fields }}
+
+Message:
+--------
+{{ fields }}
+{{ if handle == 'message' }}{{ value }}{{ /if }}
 {{ /fields }}
 
 ============================
