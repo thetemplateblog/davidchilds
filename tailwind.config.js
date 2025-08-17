@@ -38,7 +38,7 @@ module.exports = {
             },
             fontFamily: {
                 'sans': ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
-                'display': ['Cal Sans', 'Inter', 'system-ui', 'sans-serif'],
+                'display': ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
             },
             fontSize: {
                 'xs': ['0.75rem', { lineHeight: '1rem' }],
