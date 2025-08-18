@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# Pre-commit hook to prevent Claude/AI references in commit messages
+# This hook blocks commits that mention Claude, AI assistance, or similar references
+
+commit_message_file=$1
+commit_message=$(cat "$commit_message_file")
+
+# List of patterns to block (case-insensitive)
+blocked_patterns=(
+    "claude"
+    "anthropic"
+    "Generated with"
+    "Co-Authored-By: Claude"
+    "🤖"
+    "AI-generated"
+    "AI assisted"
+    "noreply@anthropic"
+    "claude.ai"
+    "Claude Code"
+)
+
+# Check for blocked patterns
+for pattern in "${blocked_patterns[@]}"; do
+    if echo "$commit_message" | grep -qi "$pattern"; then
+        echo "❌ Commit blocked: Found reference to '$pattern' in commit message"
+        echo ""
+        echo "Your commit message contains AI/Claude references that should not be included."
+        echo "Please rewrite your commit message without any AI attribution."
+        echo ""
+        echo "Blocked commit message:"
+        echo "------------------------"
+        echo "$commit_message"
+        echo "------------------------"
+        exit 1
+    fi
+done
+
+# If we get here, the commit message is clean
+exit 0
