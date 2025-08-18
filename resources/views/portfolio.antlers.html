@@ -1,0 +1,372 @@
+<!-- Portfolio Page - Modern Bold Design -->
+
+<!-- Hero Section with Gradient Background -->
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gradient-start via-gradient-middle to-gradient-end animate-gradient bg-400">
+    <!-- Geometric Pattern Overlay -->
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-0 left-0 w-96 h-96 bg-white rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float" style="animation-delay: 2s;"></div>
+    </div>
+    
+    <div class="relative z-10 text-center px-6 py-32">
+        <h1 class="text-white font-black text-6xl md:text-8xl lg:text-9xl xl:text-mega tracking-tighter mb-8 animate-blur-in" style="letter-spacing: -0.05em;">
+            {{ title ?? 'CREATIVE' }}<br>
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">DEVELOPER</span>
+        </h1>
+        <p class="text-white/90 text-xl md:text-2xl font-light max-w-3xl mx-auto mb-12 animate-fade-in" style="animation-delay: 0.3s;">
+            Building bold digital experiences with cutting-edge technology and creative design
+        </p>
+        <div class="flex flex-col sm:flex-row gap-6 justify-center animate-slide-up" style="animation-delay: 0.5s;">
+            <a href="#projects" class="px-10 py-5 bg-white text-neutral-900 font-bold text-lg rounded-full hover:scale-105 hover:shadow-2xl transition-all duration-300">
+                View Projects
+            </a>
+            <a href="#contact" class="px-10 py-5 bg-white/10 backdrop-blur-lg text-white font-bold text-lg rounded-full border-2 border-white/30 hover:bg-white/20 hover:scale-105 transition-all duration-300">
+                Get In Touch
+            </a>
+        </div>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <svg class="w-6 h-10 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 36">
+            <rect x="1" y="1" width="22" height="34" rx="11" stroke-width="2"/>
+            <circle cx="12" cy="10" r="2" fill="currentColor"/>
+        </svg>
+    </div>
+</section>
+
+<!-- About Section with Asymmetric Layout -->
+<section id="about" class="py-32 px-6 bg-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-20 items-center">
+            <!-- Text Content -->
+            <div class="relative z-10" data-scroll-reveal="left">
+                <h2 class="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-8" style="letter-spacing: -0.03em;">
+                    About<br>
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-gradient-start to-gradient-end">Me</span>
+                </h2>
+                <div class="space-y-6 text-lg text-neutral-700 font-light">
+                    <p>
+                        {{ about_content ?? "I'm a passionate developer focused on creating exceptional digital experiences. With expertise in modern web technologies, I bring ideas to life through clean code and stunning design." }}
+                    </p>
+                    <p>
+                        My approach combines technical excellence with creative innovation, ensuring every project not only works flawlessly but also delivers an unforgettable user experience.
+                    </p>
+                </div>
+                
+                <!-- Skills Pills -->
+                <div class="flex flex-wrap gap-3 mt-10">
+                    {{ skills ?? "React, TypeScript, Node.js, Tailwind CSS, Next.js" | explode(',') }}
+                        <span class="px-6 py-3 bg-gradient-to-r from-gradient-start to-gradient-end text-white font-semibold rounded-full hover:scale-105 transition-transform duration-200">
+                            {{ value | trim }}
+                        </span>
+                    {{ /skills }}
+                </div>
+            </div>
+            
+            <!-- Visual Element -->
+            <div class="relative lg:ml-20" data-scroll-reveal="right">
+                <div class="relative">
+                    <!-- Background Shape -->
+                    <div class="absolute -inset-10 bg-gradient-to-br from-electric-purple to-electric-blue rounded-3xl transform rotate-3 opacity-20"></div>
+                    
+                    <!-- Main Card -->
+                    <div class="relative bg-gradient-to-br from-gradient-start to-gradient-end p-1 rounded-3xl">
+                        <div class="bg-white rounded-3xl p-12">
+                            <div class="space-y-8">
+                                <!-- Stats -->
+                                <div class="grid grid-cols-2 gap-8">
+                                    <div>
+                                        <div class="text-5xl font-black text-gradient-start">50+</div>
+                                        <div class="text-neutral-600 mt-2">Projects Completed</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-5xl font-black text-gradient-end">5+</div>
+                                        <div class="text-neutral-600 mt-2">Years Experience</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Quote -->
+                                <div class="pt-8 border-t border-neutral-200">
+                                    <p class="text-2xl font-light text-neutral-700 italic">
+                                        "Design is not just what it looks like. Design is how it works."
+                                    </p>
+                                    <p class="text-neutral-500 mt-3">— Steve Jobs</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section with Card Grid -->
+<section id="projects" class="py-32 px-6 bg-neutral-50">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-20" data-scroll-reveal="fade">
+            <h2 class="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6" style="letter-spacing: -0.03em;">
+                Featured<br>
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-gradient-start to-gradient-end">Projects</span>
+            </h2>
+            <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
+                A selection of my recent work showcasing innovative solutions and creative implementations
+            </p>
+        </div>
+        
+        <!-- Project Cards Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project Card 1 -->
+            <div class="group relative" data-scroll-reveal="scale">
+                <div class="absolute inset-0 bg-gradient-to-br from-gradient-start to-gradient-end rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
+                <div class="relative bg-white rounded-3xl overflow-hidden hover:transform hover:-translate-y-2 transition-all duration-300 hover:shadow-2xl">
+                    <div class="aspect-video bg-gradient-to-br from-electric-purple to-electric-blue"></div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3">E-Commerce Platform</h3>
+                        <p class="text-neutral-600 mb-4">Modern shopping experience with real-time inventory and seamless checkout</p>
+                        <div class="flex gap-2 mb-6">
+                            <span class="px-3 py-1 bg-neutral-100 text-neutral-700 text-sm rounded-full">React</span>
+                            <span class="px-3 py-1 bg-neutral-100 text-neutral-700 text-sm rounded-full">Node.js</span>
+                            <span class="px-3 py-1 bg-neutral-100 text-neutral-700 text-sm rounded-full">MongoDB</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center text-gradient-start font-semibold hover:gap-3 transition-all duration-200 gap-2">
+                            View Project
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project Card 2 -->
+            <div class="group relative" data-scroll-reveal="scale" style="animation-delay: 0.1s;">
+                <div class="absolute inset-0 bg-gradient-to-br from-gradient-middle to-gradient-end rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
+                <div class="relative bg-white rounded-3xl overflow-hidden hover:transform hover:-translate-y-2 transition-all duration-300 hover:shadow-2xl">
+                    <div class="aspect-video bg-gradient-to-br from-electric-blue to-electric-pink"></div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3">SaaS Dashboard</h3>
+                        <p class="text-neutral-600 mb-4">Analytics platform with real-time data visualization and reporting</p>
+                        <div class="flex gap-2 mb-6">
+                            <span class="px-3 py-1 bg-neutral-100 text-neutral-700 text-sm rounded-full">Vue.js</span>
+                            <span class="px-3 py-1 bg-neutral-100 text-neutral-700 text-sm rounded-full">Python</span>
+                            <span class="px-3 py-1 bg-neutral-100 text-neutral-700 text-sm rounded-full">PostgreSQL</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center text-gradient-middle font-semibold hover:gap-3 transition-all duration-200 gap-2">
+                            View Project
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project Card 3 -->
+            <div class="group relative" data-scroll-reveal="scale" style="animation-delay: 0.2s;">
+                <div class="absolute inset-0 bg-gradient-to-br from-electric-pink to-gradient-start rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
+                <div class="relative bg-white rounded-3xl overflow-hidden hover:transform hover:-translate-y-2 transition-all duration-300 hover:shadow-2xl">
+                    <div class="aspect-video bg-gradient-to-br from-electric-pink to-electric-purple"></div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3">Mobile Banking App</h3>
+                        <p class="text-neutral-600 mb-4">Secure financial management with biometric authentication</p>
+                        <div class="flex gap-2 mb-6">
+                            <span class="px-3 py-1 bg-neutral-100 text-neutral-700 text-sm rounded-full">React Native</span>
+                            <span class="px-3 py-1 bg-neutral-100 text-neutral-700 text-sm rounded-full">GraphQL</span>
+                            <span class="px-3 py-1 bg-neutral-100 text-neutral-700 text-sm rounded-full">AWS</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center text-gradient-end font-semibold hover:gap-3 transition-all duration-200 gap-2">
+                            View Project
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Expertise Section with Icon Grid -->
+<section class="py-32 px-6 bg-white">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-20" data-scroll-reveal="fade">
+            <h2 class="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6" style="letter-spacing: -0.03em;">
+                Core<br>
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-gradient-start to-gradient-end">Expertise</span>
+            </h2>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Expertise Card 1 -->
+            <div class="group" data-scroll-reveal="scale">
+                <div class="bg-gradient-to-br from-gradient-start/5 to-gradient-end/5 p-8 rounded-3xl hover:from-gradient-start/10 hover:to-gradient-end/10 transition-all duration-300 hover:transform hover:scale-105">
+                    <div class="w-16 h-16 bg-gradient-to-br from-gradient-start to-gradient-end rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Frontend Development</h3>
+                    <p class="text-neutral-600">Creating responsive, interactive user interfaces with modern frameworks</p>
+                </div>
+            </div>
+            
+            <!-- Expertise Card 2 -->
+            <div class="group" data-scroll-reveal="scale" style="animation-delay: 0.1s;">
+                <div class="bg-gradient-to-br from-gradient-middle/5 to-gradient-end/5 p-8 rounded-3xl hover:from-gradient-middle/10 hover:to-gradient-end/10 transition-all duration-300 hover:transform hover:scale-105">
+                    <div class="w-16 h-16 bg-gradient-to-br from-gradient-middle to-gradient-end rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Backend Systems</h3>
+                    <p class="text-neutral-600">Building scalable APIs and server architectures for complex applications</p>
+                </div>
+            </div>
+            
+            <!-- Expertise Card 3 -->
+            <div class="group" data-scroll-reveal="scale" style="animation-delay: 0.2s;">
+                <div class="bg-gradient-to-br from-electric-purple/5 to-electric-pink/5 p-8 rounded-3xl hover:from-electric-purple/10 hover:to-electric-pink/10 transition-all duration-300 hover:transform hover:scale-105">
+                    <div class="w-16 h-16 bg-gradient-to-br from-electric-purple to-electric-pink rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">UI/UX Design</h3>
+                    <p class="text-neutral-600">Crafting intuitive interfaces with focus on user experience and accessibility</p>
+                </div>
+            </div>
+            
+            <!-- Expertise Card 4 -->
+            <div class="group" data-scroll-reveal="scale" style="animation-delay: 0.3s;">
+                <div class="bg-gradient-to-br from-electric-blue/5 to-gradient-start/5 p-8 rounded-3xl hover:from-electric-blue/10 hover:to-gradient-start/10 transition-all duration-300 hover:transform hover:scale-105">
+                    <div class="w-16 h-16 bg-gradient-to-br from-electric-blue to-gradient-start rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Cloud Architecture</h3>
+                    <p class="text-neutral-600">Designing and deploying cloud-native solutions for optimal performance</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section with Gradient -->
+<section id="contact" class="py-32 px-6 bg-gradient-to-br from-gradient-start via-gradient-middle to-gradient-end animate-gradient bg-400">
+    <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-white text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-8" style="letter-spacing: -0.03em;" data-scroll-reveal="fade">
+            Let's Create<br>
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-white/90 to-blue-200">Something Amazing</span>
+        </h2>
+        <p class="text-white/90 text-xl md:text-2xl font-light mb-12 max-w-2xl mx-auto" data-scroll-reveal="fade" style="animation-delay: 0.2s;">
+            Ready to bring your vision to life? Let's collaborate on your next big project.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-6 justify-center" data-scroll-reveal="scale" style="animation-delay: 0.4s;">
+            <a href="mailto:hello@example.com" class="px-12 py-6 bg-white text-neutral-900 font-bold text-lg rounded-full hover:scale-105 hover:shadow-2xl transition-all duration-300">
+                Start a Project
+            </a>
+            <a href="/contact" class="px-12 py-6 bg-white/10 backdrop-blur-lg text-white font-bold text-lg rounded-full border-2 border-white/30 hover:bg-white/20 hover:scale-105 transition-all duration-300">
+                View Resume
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Custom Styles -->
+<style>
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+        width: 12px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #764ba2, #667eea, #0066FF);
+        border-radius: 6px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(180deg, #5a3d7a, #5567d8, #0055dd);
+    }
+    
+    /* Smooth scroll behavior */
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    /* Parallax effect for sections */
+    [data-scroll-reveal] {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    [data-scroll-reveal="left"] {
+        transform: translateX(-30px);
+    }
+    
+    [data-scroll-reveal="right"] {
+        transform: translateX(30px);
+    }
+    
+    [data-scroll-reveal="scale"] {
+        transform: scale(0.95);
+    }
+    
+    [data-scroll-reveal].revealed {
+        opacity: 1;
+        transform: translateY(0) translateX(0) scale(1);
+    }
+</style>
+
+<!-- Scroll Reveal Script -->
+<script>
+    // Intersection Observer for scroll animations
+    document.addEventListener('DOMContentLoaded', function() {
+        const reveals = document.querySelectorAll('[data-scroll-reveal]');
+        
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        reveals.forEach(el => revealObserver.observe(el));
+        
+        // Smooth parallax scrolling
+        let ticking = false;
+        function updateParallax() {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.parallax');
+            
+            parallaxElements.forEach(el => {
+                const speed = el.dataset.speed || 0.5;
+                const yPos = -(scrolled * speed);
+                el.style.transform = `translateY(${yPos}px)`;
+            });
+            
+            ticking = false;
+        }
+        
+        function requestTick() {
+            if (!ticking) {
+                window.requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        }
+        
+        window.addEventListener('scroll', requestTick);
+    });
+</script>
