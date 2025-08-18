@@ -1,8 +1,37 @@
-<!-- Hero Section -->
-<section class="bg-white">
-    <div class="container-custom section-padding">
-        <div class="max-w-4xl mx-auto text-center">
-            {{ partial:hero }}
+<!-- Hero Section - Modern Design -->
+<section class="hero-modern">
+    <div class="hero-background">
+        <!-- Gradient Orbs -->
+        <div class="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-violet-200/30 to-blue-200/30 rounded-full blur-3xl animate-float"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-blue-200/30 to-cyan-200/30 rounded-full blur-3xl animate-float" style="animation-delay: 3s;"></div>
+    </div>
+    
+    <div class="hero-content">
+        <div class="inline-flex items-center space-x-2 px-4 py-2 bg-white/90 backdrop-blur border border-neutral-200 rounded-full mb-6">
+            <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+            <span class="text-sm font-medium text-neutral-600">Principal Systems Engineer</span>
+        </div>
+        
+        <h1 class="hero-title">
+            Building <span class="gradient-text">Digital Excellence</span><br>
+            Through Innovation
+        </h1>
+        
+        <p class="hero-subtitle">
+            Expert insights on DevOps, cloud architecture, and modern development practices.
+            Helping teams build better software through automation and best practices.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/writing" class="btn btn-primary">
+                Explore Articles
+                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+            </a>
+            <a href="/contact" class="btn btn-secondary">
+                Get in Touch
+            </a>
         </div>
     </div>
 </section>

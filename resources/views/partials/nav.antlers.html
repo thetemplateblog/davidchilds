@@ -1,17 +1,23 @@
-    <!-- Header -->
+    <!-- Modern Navigation Header -->
     <script async data-uid="8062c04364" src="https://david-childs.ck.page/8062c04364/index.js"></script>
-    <nav class="container-custom">
-        <div class="flex justify-between items-center h-16">
-            <!-- Logo/Name -->
-            <a href="/" class="text-2xl font-bold text-neutral-900 hover:text-primary-600 transition-colors">
-                David Childs
-            </a>
+    <nav class="nav-modern" id="main-nav">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo with Icon -->
+                <a href="/" class="flex items-center space-x-2 group">
+                    <div class="w-8 h-8 bg-gradient-to-br from-violet-600 to-blue-600 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">D</span>
+                    </div>
+                    <span class="text-xl font-semibold text-neutral-900 group-hover:text-neutral-700 transition-colors">
+                        David Childs
+                    </span>
+                </a>
             
             <!-- Desktop Navigation -->
-            <div class="hidden md:flex items-center space-x-8">
+            <div class="hidden md:flex items-center space-x-1">
                 {{ nav:collection:pages include_home="true" }}
                     {{ if !hide_nav }}
-                        <a href="{{ url }}" class="menu-item text-neutral-600 hover:text-neutral-900 font-medium transition-colors">
+                        <a href="{{ url }}" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 transition-all">
                             {{ title }}
                         </a>
                     {{ /if }}
@@ -42,3 +48,23 @@
             </div>
         </div>
     </nav>
+    
+    <script>
+        // Navigation scroll effect
+        let lastScroll = 0;
+        const nav = document.getElementById('main-nav');
+        
+        if (nav) {
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.pageYOffset;
+                
+                if (currentScroll > 10) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+                
+                lastScroll = currentScroll;
+            });
+        }
+    </script>
