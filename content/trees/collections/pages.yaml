@@ -4,8 +4,14 @@ tree:
   -
     entry: ae88d505-347e-4e45-b69d-6b3454db4166
   -
-    entry: contact
-  -
     entry: mvp-validation
   -
     entry: 5d8f2021-22eb-4359-b3bd-8102ffed1c1d
+  -
+    entry: privacy-policy
+  -
+    entry: terms-of-service
+  -
+    entry: 7c3d5e8a-9b2f-4a1c-8e5d-3f7b9c4d2a6e
+  -
+    entry: contact
