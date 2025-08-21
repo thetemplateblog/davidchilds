@@ -4,23 +4,34 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 
 class NewsletterController extends Controller
 {
     public function subscribe(Request $request): JsonResponse
     {
         try {
-            $request->validate([
-                'email' => 'required|email'
+            // Validate the request
+            $validator = Validator::make($request->all(), [
+                'email' => 'required|email:rfc,dns'
             ]);
+
+            if ($validator->fails()) {
+                return response()->json([
+                    'success' => false,
+                    'error' => 'Please provide a valid email address'
+                ], 422);
+            }
 
             $email = $request->input('email');
             $convertKitApiKey = env('CONVERTKIT_API_KEY');
 
             if (!$convertKitApiKey) {
-                \Log::error('ConvertKit API key not found in environment variables');
+                Log::error('ConvertKit API key not found in environment variables');
                 // For development, we'll just log the email and return success
-                \Log::info('Email subscription request: ' . $email);
+                Log::info('Email subscription request: ' . $email);
                 return response()->json([
                     'success' => true,
                     'message' => 'Email registered successfully (dev mode)'
@@ -34,7 +45,7 @@ class NewsletterController extends Controller
             ], $convertKitApiKey);
 
             if (!$subscriberResponse['success']) {
-                \Log::error('ConvertKit subscriber API error: ' . json_encode($subscriberResponse['data']));
+                Log::error('ConvertKit subscriber API error: ' . json_encode($subscriberResponse['data']));
                 return response()->json([
                     'error' => 'Failed to subscribe to newsletter'
                 ], 500);
@@ -51,11 +62,11 @@ class NewsletterController extends Controller
                 ], $convertKitApiKey);
 
                 if (!$tagResponse['success']) {
-                    \Log::error('ConvertKit tag API error: ' . json_encode($tagResponse['data']));
+                    Log::error('ConvertKit tag API error: ' . json_encode($tagResponse['data']));
                     // Don't fail the whole request if tagging fails
                 }
             } else {
-                \Log::error('Could not find or create ' . $tagName . ' tag');
+                Log::error('Could not find or create ' . $tagName . ' tag');
             }
 
             return response()->json([
@@ -63,12 +74,8 @@ class NewsletterController extends Controller
                 'message' => 'Successfully subscribed to newsletter!'
             ]);
 
-        } catch (\Illuminate\Validation\ValidationException $e) {
-            return response()->json([
-                'error' => 'Invalid email format'
-            ], 400);
         } catch (\Exception $e) {
-            \Log::error('Subscription error: ' . $e->getMessage());
+            Log::error('Subscription error: ' . $e->getMessage() . ' - ' . $e->getTraceAsString());
             return response()->json([
                 'error' => 'Internal server error'
             ], 500);
@@ -77,7 +84,7 @@ class NewsletterController extends Controller
 
     private function makeConvertKitRequest(string $endpoint, array $data, string $apiKey): array
     {
-        $response = \Http::withHeaders([
+        $response = Http::withHeaders([
             'Content-Type' => 'application/json',
             'X-Kit-Api-Key' => $apiKey
         ])->post("https://api.convertkit.com/v4/{$endpoint}", $data);
@@ -100,7 +107,7 @@ class NewsletterController extends Controller
         }
 
         // Tag might already exist, try to get it
-        $getTagsResponse = \Http::withHeaders([
+        $getTagsResponse = Http::withHeaders([
             'X-Kit-Api-Key' => $apiKey
         ])->get('https://api.convertkit.com/v4/tags');
 
