@@ -48,9 +48,9 @@
 <!-- Article Content -->
 <section class="bg-white">
     <div class="container-custom py-16">
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+        <div class="max-w-4xl mx-auto">
             <!-- Main Content -->
-            <article class="lg:col-span-3">
+            <article>
                 <div class="max-w-none prose prose-lg prose-neutral">
                     {{ if intro }}
                         <div class="text-xl text-neutral-600 mb-8 font-medium leading-relaxed">
@@ -84,21 +84,6 @@
                     </div>
                 </div>
             </article>
-            
-            <!-- Sidebar -->
-            <aside class="space-y-8">
-                <!-- Table of Contents (if applicable) -->
-                <div class="card p-6 sticky top-24">
-                    <h3 class="font-bold text-lg mb-4">On this page</h3>
-                    <nav class="space-y-2 text-sm">
-                        <!-- This would need JavaScript to generate from headings -->
-                        <a href="#" class="block text-neutral-600 hover:text-primary-600 transition-colors">Introduction</a>
-                        <a href="#" class="block text-neutral-600 hover:text-primary-600 transition-colors">Main Concepts</a>
-                        <a href="#" class="block text-neutral-600 hover:text-primary-600 transition-colors">Implementation</a>
-                        <a href="#" class="block text-neutral-600 hover:text-primary-600 transition-colors">Conclusion</a>
-                    </nav>
-                </div>
-            </aside>
         </div>
     </div>
 </section>
