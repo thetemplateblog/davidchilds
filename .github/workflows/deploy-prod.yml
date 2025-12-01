@@ -96,7 +96,7 @@ jobs:
           target: "/tmp"
       
       - name: Deploy to production server
-        uses: appleboy/ssh-action@v1.2.2
+        uses: appleboy/ssh-action@v1.2.4
         with:
           host: ${{ secrets.PROD_DEPLOY_HOST }}
           username: ${{ secrets.PROD_DEPLOY_USER }}
@@ -180,7 +180,7 @@ jobs:
             echo "📦 Backup available at: $BACKUP_DIR"
       
       - name: Run smoke tests
-        uses: appleboy/ssh-action@v1.2.2
+        uses: appleboy/ssh-action@v1.2.4
         with:
           host: ${{ secrets.PROD_DEPLOY_HOST }}
           username: ${{ secrets.PROD_DEPLOY_USER }}
