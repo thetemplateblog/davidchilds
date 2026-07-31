@@ -20,7 +20,7 @@
         "aryehraber/statamic-logbook": "^3.3",
         "austenc/socialize": "^1.0",
         "intervention/image": "^2.7",
-        "laravel/framework": "^11",
+        "laravel/framework": "^12.40",
         "laravel/tinker": "^2.9",
         "mitydigital/statamic-two-factor": "^2.2",
         "statamic/cms": "^5.0",
