@@ -16,13 +16,13 @@
             <div class="hidden md:flex items-center space-x-1">
                 {{ nav:collection:pages include_home="true" }}
                     {{ if !hide_nav }}
-                        <a href="{{ url }}" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 transition-all">
+                        <a href="{{ url }}" class="nav-link px-3 py-2 rounded-lg text-sm font-medium transition-all {{ if is_current }}text-neutral-900 bg-neutral-100{{ else }}text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100{{ /if }}">
                             {{ title }}
                         </a>
                     {{ /if }}
                 {{ /nav:collection:pages }}
             </div>
-            
+
             <!-- Mobile menu button -->
             <button type="button" class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500" x-data="{ open: false }" @click="open = !open">
                 <svg class="h-6 w-6" x-bind:class="{ 'hidden': open, 'block': !open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -39,7 +39,7 @@
             <div class="px-2 pt-2 pb-3 space-y-1 border-t border-neutral-200">
                 {{ nav:collection:pages include_home="true" }}
                     {{ if !hide_nav }}
-                        <a href="{{ url }}" class="menu-item block px-3 py-2 rounded-md text-base font-medium text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100">
+                        <a href="{{ url }}" class="menu-item block px-3 py-2 rounded-md text-base font-medium {{ if is_current }}text-neutral-900 bg-neutral-100{{ else }}text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100{{ /if }}">
                             {{ title }}
                         </a>
                     {{ /if }}

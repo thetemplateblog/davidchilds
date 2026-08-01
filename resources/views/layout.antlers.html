@@ -13,7 +13,6 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token }}">
         {{ vite src="resources/js/site.js|resources/css/site.css" }}
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,22 +47,6 @@
                 {{ partial:footer }}
             </div>
         </footer>
-
-        <script>
-            // Get the current page URL path
-            const currentPath = window.location.pathname;
-
-            // Select all menu-item links
-            const menuItems = document.querySelectorAll('.menu-item');
-
-            // Iterate through each menu item and check if it matches the current URL
-            menuItems.forEach(item => {
-                if (item.getAttribute('href') === currentPath) {
-                    item.classList.remove('text-neutral-600');
-                    item.classList.add('text-primary-600', 'font-medium');
-                }
-            });
-        </script>
         {{ popular_script }}
     </body>
 </html>

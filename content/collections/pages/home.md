@@ -1,6 +1,6 @@
 ---
 id: home
-blueprint: pages
+blueprint: page
 title: Home
 template: home
 author: 443cb49f-b30a-4e19-8c4a-fc72691de37d

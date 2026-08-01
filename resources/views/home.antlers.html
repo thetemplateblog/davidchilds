@@ -43,7 +43,7 @@
             <!-- About Content -->
             <div>
                 <h2 class="text-3xl md:text-4xl font-bold mb-6">About Me</h2>
-                {{ collection:writing title:contains="About" limit="1" }}
+                {{ collection:writing slug="about-me" limit="1" }}
                     <div class="space-y-4 text-neutral-600 [&>p]:mb-4">
                         {{ if about_intro }}
                             {{ about_intro | markdown }}

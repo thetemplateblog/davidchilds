@@ -1,18 +1,14 @@
-{{ collection:heros id:not:id as="heros" }}
-    <div x-data="{ heros: {{ heros | to_json | sanitize:true }} }">
-        <template x-for="hero in heros.sort(() => .5 - Math.random()).slice(0, 1)" :key="hero.id">
-            <div class="animate-fade-in py-8">
-                <!-- Display the hero's quote -->
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight" x-html="hero.quote"></h1>
-                
-                <!-- Quote attribution -->
-                <div class="text-lg md:text-xl text-neutral-500 mb-6">
-                    <span x-text="'— ' + hero.quote_attribution"></span>
-                </div>
-                
-                <!-- Content description -->
-                <p class="text-lg md:text-xl text-neutral-600 leading-relaxed max-w-3xl mx-auto" x-html="hero.content"></p>
-            </div>
-        </template>
+{{ collection:heros sort="random" limit="1" }}
+    <div class="animate-fade-in py-8">
+        <!-- Display the hero's quote -->
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{{ quote }}</h1>
+
+        <!-- Quote attribution -->
+        <div class="text-lg md:text-xl text-neutral-500 mb-6">
+            — {{ quote_attribution }}
+        </div>
+
+        <!-- Content description -->
+        <p class="text-lg md:text-xl text-neutral-600 leading-relaxed max-w-3xl mx-auto">{{ content | markdown }}</p>
     </div>
 {{ /collection:heros }}

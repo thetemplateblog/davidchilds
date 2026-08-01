@@ -1,6 +1,6 @@
 ---
 id: terms-of-service
-blueprint: pages
+blueprint: page
 title: 'Terms of Service'
 template: legal
 author: 443cb49f-b30a-4e19-8c4a-fc72691de37d

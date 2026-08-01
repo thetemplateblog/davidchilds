@@ -13,25 +13,7 @@ tabs:
               validate:
                 - required
           -
-            handle: content
-            field:
-              type: markdown
-              display: Content
-              localizable: true
-          -
-            handle: author
-            field:
-              type: users
-              display: Author
-              default: current
-              localizable: true
-              max_items: 1
-          -
-            handle: template
-            field:
-              type: template
-              display: Template
-              localizable: true
+            import: standard_meta
   sidebar:
     display: Sidebar
     sections:
@@ -43,8 +25,4 @@ tabs:
               type: toggle
               display: 'Hide Nav'
           -
-            handle: slug
-            field:
-              type: slug
-              localizable: true
-              validate: 'max:200'
+            import: slug

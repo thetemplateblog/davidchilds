@@ -1,5 +1,6 @@
 title: 'MVP Validation Inquiry'
 handle: mvp_inquiry
+honeypot: winnie
 fields:
   -
     handle: name
@@ -106,3 +107,11 @@ fields:
       required: false
 
 store: true
+email:
+  -
+    to: '{{ config:mail.to_address }}'
+    from: '{{ config:mail.from_address }}'
+    reply_to: '{{ email }}'
+    subject: 'MVP Validation Inquiry: {{ company_name }}'
+    html: emails/mvp_inquiry
+    text: emails/mvp_inquiry_text

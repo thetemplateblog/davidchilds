@@ -1,6 +1,6 @@
 ---
 id: privacy-policy
-blueprint: pages
+blueprint: page
 title: 'Privacy Policy'
 template: legal
 author: 443cb49f-b30a-4e19-8c4a-fc72691de37d

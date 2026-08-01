@@ -9,6 +9,24 @@ two_factor:
 two_factor_confirmed_at: 1729881246.408
 two_factor_completed: 1729881265.9631
 avatar: eyes_1200x1200.png
+passkeys:
+  '-QTUZ_tQ5t5SlsW51rWzMaO82wsItxN7yQV8g_FkEDhFZBG_eY68xlTBgOw':
+    name: default
+    credential:
+      publicKeyCredentialId: '-QTUZ_tQ5t5SlsW51rWzMaO82wsItxN7yQV8g_FkEDhFZBG_eY68xlTBgOw'
+      type: public-key
+      transports:
+        - internal
+        - hybrid
+      attestationType: none
+      trustPath: {  }
+      aaguid: bada5566-a7aa-401f-bd96-45619a55120d
+      credentialPublicKey: pQECAyYgASFYIPx3TWulzCYlfRgVpHfH6MYq_LncF8PQcIHhilAXvABpIlggCT1Ivi9FwZ6p86nCN2Z-emh7l7XGW_rQKRek1KGgNpY
+      userHandle: NDQzY2I0OWYtYjMwYS00ZTE5LThjNGEtZmM3MjY5MWRlMzdk
+      counter: 0
+      backupEligible: true
+      backupStatus: true
+      uvInitialized: true
 id: 443cb49f-b30a-4e19-8c4a-fc72691de37d
 password_hash: $2y$12$0R9Gm8qcUpPOfb7TFRhbYOx7UFT7ZaDNDMu.nGzClN0InWpeM71p2
 preferences:
@@ -33,21 +51,3 @@ preferences:
       view: list
     pricing:
       view: tree
-passkeys:
-  '-QTUZ_tQ5t5SlsW51rWzMaO82wsItxN7yQV8g_FkEDhFZBG_eY68xlTBgOw':
-    name: default
-    credential:
-      publicKeyCredentialId: '-QTUZ_tQ5t5SlsW51rWzMaO82wsItxN7yQV8g_FkEDhFZBG_eY68xlTBgOw'
-      type: public-key
-      transports:
-        - internal
-        - hybrid
-      attestationType: none
-      trustPath: {  }
-      aaguid: bada5566-a7aa-401f-bd96-45619a55120d
-      credentialPublicKey: pQECAyYgASFYIPx3TWulzCYlfRgVpHfH6MYq_LncF8PQcIHhilAXvABpIlggCT1Ivi9FwZ6p86nCN2Z-emh7l7XGW_rQKRek1KGgNpY
-      userHandle: NDQzY2I0OWYtYjMwYS00ZTE5LThjNGEtZmM3MjY5MWRlMzdk
-      counter: 0
-      backupEligible: true
-      backupStatus: true
-      uvInitialized: true
