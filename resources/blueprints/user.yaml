@@ -39,13 +39,3 @@ tabs:
               type: assets
               max_files: 1
               container: assets
-      -
-        display: 'Two Factor Authentication'
-        fields:
-          -
-            handle: two_factor
-            field:
-              display: 'Two Factor Status'
-              hide_display: true
-              type: two_factor
-              listable: true

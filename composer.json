@@ -8,23 +8,15 @@
         "flat file",
         "laravel"
     ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/thetemplateblog/seo-pro"
-        }
-    ],
     "require": {
-        "php": "^8.2",
+        "php": "^8.3",
         "arthurperton/popular": "^1.1",
-        "aryehraber/statamic-logbook": "^3.3",
+        "aryehraber/statamic-logbook": "^4.0",
         "austenc/socialize": "^1.0",
-        "intervention/image": "^2.7",
         "laravel/framework": "^12.40",
         "laravel/tinker": "^2.9",
-        "mitydigital/statamic-two-factor": "^2.2",
-        "statamic/cms": "^5.0",
-        "statamic/seo-pro": "dev-master as dev-master"
+        "statamic/cms": "^6.0",
+        "statamic/seo-pro": "^7.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.8.1",

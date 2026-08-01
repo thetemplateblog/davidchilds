@@ -22,3 +22,14 @@ preferences:
         - date
         - status
         - pageviews
+      view: list
+    pages:
+      view: tree
+    curriculum:
+      view: tree
+    features:
+      view: list
+    heros:
+      view: list
+    pricing:
+      view: tree
