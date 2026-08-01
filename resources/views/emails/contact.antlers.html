@@ -77,7 +77,7 @@
                         <a href="mailto:{{ value }}">{{ value }}</a>
                     {{ elseif handle == 'message' }}
                         <div class="message-content">
-                            {{ value | nl2br | raw }}
+                            {{ value | nl2br }}
                         </div>
                     {{ else }}
                         {{ value }}

@@ -1,4 +1,4 @@
-<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
     <!-- About Column -->
     <div class="md:col-span-2">
         <h3 class="font-bold text-lg mb-4">David Childs</h3>
@@ -55,90 +55,6 @@
         </ul>
     </div>
     
-    <!-- Newsletter -->
-    <div>
-        <h3 class="font-bold text-lg mb-4">Stay Updated</h3>
-        <p class="text-neutral-600 mb-4">Get the latest insights and articles delivered to your inbox.</p>
-        
-        <!-- Newsletter Subscription Form -->
-        <form id="newsletter-form" class="newsletter-form">
-            <div id="newsletter-error" class="hidden text-red-600 text-sm mb-2"></div>
-            <div id="newsletter-success" class="hidden text-green-600 text-sm mb-2"></div>
-            
-            <div class="flex flex-col space-y-2">
-                <input id="newsletter-email" 
-                       class="px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" 
-                       name="email" 
-                       aria-label="Email Address" 
-                       placeholder="Your email" 
-                       required 
-                       type="email">
-                
-                <button type="submit" 
-                        id="newsletter-submit"
-                        class="btn-primary relative">
-                    <div id="newsletter-spinner" class="absolute inset-0 flex items-center justify-center hidden">
-                        <div class="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
-                    </div>
-                    <span id="newsletter-button-text">Subscribe</span>
-                </button>
-            </div>
-            
-            <p class="text-xs text-neutral-500 mt-2">No spam. Unsubscribe at any time.</p>
-        </form>
-
-        <script>
-        document.getElementById('newsletter-form').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const form = this;
-            const email = document.getElementById('newsletter-email').value;
-            const submitBtn = document.getElementById('newsletter-submit');
-            const spinner = document.getElementById('newsletter-spinner');
-            const buttonText = document.getElementById('newsletter-button-text');
-            const errorDiv = document.getElementById('newsletter-error');
-            const successDiv = document.getElementById('newsletter-success');
-            
-            // Reset states
-            errorDiv.classList.add('hidden');
-            successDiv.classList.add('hidden');
-            
-            // Show loading state
-            submitBtn.disabled = true;
-            spinner.classList.remove('hidden');
-            buttonText.textContent = 'Subscribing...';
-            
-            try {
-                const response = await fetch('/api/newsletter/subscribe', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ email: email })
-                });
-                
-                const data = await response.json();
-                
-                if (data.success) {
-                    successDiv.textContent = data.message;
-                    successDiv.classList.remove('hidden');
-                    form.reset();
-                } else {
-                    errorDiv.textContent = data.error || 'Something went wrong. Please try again.';
-                    errorDiv.classList.remove('hidden');
-                }
-            } catch (error) {
-                errorDiv.textContent = 'Network error. Please try again.';
-                errorDiv.classList.remove('hidden');
-            } finally {
-                // Reset loading state
-                submitBtn.disabled = false;
-                spinner.classList.add('hidden');
-                buttonText.textContent = 'Subscribe';
-            }
-        });
-        </script>
-    </div>
 </div>
 
 <div class="mt-8 pt-8 border-t border-neutral-200 flex flex-col md:flex-row justify-between items-center">
