@@ -14,6 +14,7 @@
         "aryehraber/statamic-logbook": "^4.0",
         "austenc/socialize": "^1.0",
         "laravel/framework": "^12.40",
+        "laravel/nightwatch": "^1.28",
         "laravel/tinker": "^2.9",
         "statamic/cms": "^6.0",
         "statamic/seo-pro": "^7.0"
