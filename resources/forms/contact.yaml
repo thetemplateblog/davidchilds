@@ -49,7 +49,7 @@ store: true
 email:
   -
     to: '{{ config:mail.to_address }}'
-    from: '{{ config:mail.from_address }}'
+    from: '{{ config:mail.from.address }}'
     reply_to: '{{ email }}'
     subject: 'Contact Form Submission: {{ subject }}'
     html: emails/contact
