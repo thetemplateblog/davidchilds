@@ -1,0 +1,111 @@
+title: Projects
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+          -
+            handle: intro
+            field:
+              type: textarea
+              display: Intro
+              rows: 2
+          -
+            handle: projects
+            field:
+              type: grid
+              display: Projects
+              mode: stacked
+              add_row: 'Add project'
+              fields:
+                -
+                  handle: name
+                  field:
+                    type: text
+                    display: Name
+                    width: 50
+                    validate:
+                      - required
+                -
+                  handle: url
+                  field:
+                    type: text
+                    input_type: url
+                    display: URL
+                    width: 50
+                -
+                  handle: secondary_label
+                  field:
+                    type: text
+                    display: 'Secondary link label'
+                    width: 50
+                -
+                  handle: secondary_url
+                  field:
+                    type: text
+                    input_type: url
+                    display: 'Secondary link URL'
+                    width: 50
+                -
+                  handle: tag
+                  field:
+                    type: text
+                    display: Tag
+                    width: 50
+                -
+                  handle: tag_color
+                  field:
+                    type: select
+                    display: 'Tag color'
+                    default: blue
+                    width: 50
+                    options:
+                      blue: Blue
+                      green: Green
+                      purple: Purple
+                      amber: Amber
+                -
+                  handle: description
+                  field:
+                    type: textarea
+                    display: Description
+                    rows: 3
+                -
+                  handle: features
+                  field:
+                    type: list
+                    display: Features
+                -
+                  handle: tech
+                  field:
+                    type: list
+                    display: 'Tech stack'
+                -
+                  handle: screenshot
+                  field:
+                    type: assets
+                    display: Screenshot
+                    container: assets
+                    max_files: 1
+          -
+            import: standard_meta
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: hide_nav
+            field:
+              type: toggle
+              display: 'Hide Nav'
+          -
+            import: slug

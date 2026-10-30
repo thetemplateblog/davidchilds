@@ -1,0 +1,24 @@
+title: Profile
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: job_title
+            field:
+              type: text
+              display: 'Job title'
+              instructions: 'Shown in the footer.'
+          -
+            handle: location
+            field:
+              type: text
+              display: Location
+          -
+            handle: footer_blurb
+            field:
+              type: textarea
+              display: 'Footer blurb'
+              rows: 2

@@ -1,0 +1,304 @@
+title: Home
+tabs:
+  main:
+    display: Hero
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+          -
+            handle: hero_eyebrow
+            field:
+              type: text
+              display: Eyebrow
+              instructions: 'Short label above the headline, e.g. your title.'
+          -
+            handle: hero_heading
+            field:
+              type: textarea
+              display: Headline
+              instructions: 'One sentence that says what you do.'
+              rows: 2
+              validate:
+                - required
+          -
+            handle: hero_intro
+            field:
+              type: textarea
+              display: Intro
+              rows: 3
+          -
+            handle: hero_primary_label
+            field:
+              type: text
+              display: 'Primary button label'
+              width: 50
+          -
+            handle: hero_primary_link
+            field:
+              type: link
+              display: 'Primary button link'
+              collections:
+                - pages
+                - writing
+              width: 50
+          -
+            handle: hero_secondary_label
+            field:
+              type: text
+              display: 'Secondary button label'
+              width: 50
+          -
+            handle: hero_secondary_link
+            field:
+              type: link
+              display: 'Secondary button link'
+              collections:
+                - pages
+                - writing
+              width: 50
+          -
+            import: standard_meta
+  proof:
+    display: Stats
+    sections:
+      -
+        fields:
+          -
+            handle: proof_stats
+            field:
+              type: grid
+              display: 'Proof strip'
+              instructions: 'Up to four numbers shown under the hero. Leave empty to hide the strip.'
+              max_rows: 4
+              add_row: 'Add stat'
+              fields:
+                -
+                  handle: value
+                  field:
+                    type: text
+                    display: Value
+                    validate:
+                      - required
+                -
+                  handle: label
+                  field:
+                    type: text
+                    display: Label
+                    validate:
+                      - required
+  writing:
+    display: Writing
+    sections:
+      -
+        fields:
+          -
+            handle: writing_eyebrow
+            field:
+              type: text
+              display: Eyebrow
+              width: 50
+          -
+            handle: writing_heading
+            field:
+              type: text
+              display: Heading
+              width: 50
+          -
+            handle: writing_categories
+            field:
+              type: terms
+              display: 'Category chips'
+              instructions: 'Categories shown as filter chips beside the heading.'
+              taxonomies:
+                - categories
+              mode: select
+              create: false
+          -
+            handle: featured_entries
+            field:
+              type: entries
+              display: 'Featured posts'
+              instructions: 'The two cornerstone posts shown as large cards.'
+              collections:
+                - writing
+              max_items: 2
+              mode: default
+          -
+            handle: recent_limit
+            field:
+              type: integer
+              display: 'Recent posts to list'
+              default: 4
+              width: 50
+  work:
+    display: Work
+    sections:
+      -
+        fields:
+          -
+            handle: work_eyebrow
+            field:
+              type: text
+              display: Eyebrow
+              width: 50
+          -
+            handle: work_heading
+            field:
+              type: text
+              display: Heading
+              width: 50
+          -
+            handle: work_items
+            field:
+              type: grid
+              display: 'Work cards'
+              instructions: 'Keep these employer-neutral. Leave Result empty to hide that row.'
+              mode: stacked
+              max_rows: 6
+              add_row: 'Add work card'
+              fields:
+                -
+                  handle: title
+                  field:
+                    type: text
+                    display: Title
+                    validate:
+                      - required
+                -
+                  handle: icon
+                  field:
+                    type: select
+                    display: Icon
+                    default: shield
+                    options:
+                      shield: Shield
+                      database: Database
+                      users: People
+                      code: Code
+                -
+                  handle: problem
+                  field:
+                    type: textarea
+                    display: Problem
+                    rows: 2
+                -
+                  handle: approach
+                  field:
+                    type: textarea
+                    display: Approach
+                    rows: 2
+                -
+                  handle: result
+                  field:
+                    type: textarea
+                    display: Result
+                    rows: 2
+  about:
+    display: About
+    sections:
+      -
+        fields:
+          -
+            handle: about_eyebrow
+            field:
+              type: text
+              display: Eyebrow
+              width: 50
+          -
+            handle: about_heading
+            field:
+              type: text
+              display: Heading
+              width: 50
+          -
+            handle: about_photo
+            field:
+              type: assets
+              display: Portrait
+              container: assets
+              max_files: 1
+              mode: grid
+              instructions: 'Optional. When empty, the At-a-glance card is shown instead.'
+          -
+            handle: about_facts
+            field:
+              type: grid
+              display: 'At a glance'
+              instructions: 'Short facts shown on the card beside your bio when no portrait is set.'
+              max_rows: 6
+              add_row: 'Add fact'
+              fields:
+                -
+                  handle: label
+                  field:
+                    type: text
+                    display: Label
+                    validate:
+                      - required
+                -
+                  handle: value
+                  field:
+                    type: text
+                    display: Value
+                    validate:
+                      - required
+          -
+            handle: about_body
+            field:
+              type: markdown
+              display: Bio
+          -
+            handle: about_link_label
+            field:
+              type: text
+              display: 'Link label'
+              width: 50
+          -
+            handle: about_link
+            field:
+              type: link
+              display: 'Link'
+              collections:
+                - pages
+                - writing
+              width: 50
+  newsletter:
+    display: Newsletter
+    sections:
+      -
+        fields:
+          -
+            handle: show_newsletter
+            field:
+              type: toggle
+              display: 'Show newsletter signup'
+              instructions: 'Signups are stored under Forms › Newsletter.'
+          -
+            handle: newsletter_heading
+            field:
+              type: text
+              display: Heading
+          -
+            handle: newsletter_text
+            field:
+              type: text
+              display: 'Supporting text'
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: hide_nav
+            field:
+              type: toggle
+              display: 'Hide Nav'
+          -
+            import: slug

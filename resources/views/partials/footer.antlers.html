@@ -2,9 +2,8 @@
     <!-- About Column -->
     <div class="md:col-span-2">
         <h3 class="font-bold text-lg mb-4">David Childs</h3>
-        <p class="text-neutral-600 mb-4">
-            Consulting Systems Engineer helping organizations build robust, scalable technology infrastructure.
-        </p>
+        {{ if profile:job_title }}<p class="text-neutral-700 font-medium mb-2">{{ profile:job_title }}{{ if profile:location }} · {{ profile:location }}{{ /if }}</p>{{ /if }}
+        {{ if profile:footer_blurb }}<p class="text-neutral-600 mb-4">{{ profile:footer_blurb }}</p>{{ /if }}
         <div class="flex space-x-4">
             {{ if social_links:twitter_url }}
             <a href="{{ social_links:twitter_url }}" class="text-neutral-400 hover:text-primary-600 transition-colors">
@@ -59,7 +58,7 @@
 
 <div class="mt-8 pt-8 border-t border-neutral-200 flex flex-col md:flex-row justify-between items-center">
     <p class="text-neutral-600 text-sm mb-4 md:mb-0">
-        &copy; 2024 David Childs. All rights reserved.
+        &copy; {{ now format="Y" }} David Childs. All rights reserved.
     </p>
     <div class="flex space-x-6 text-sm">
         <a href="/privacy-policy" class="text-neutral-600 hover:text-primary-600 transition-colors">Privacy Policy</a>

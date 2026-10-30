@@ -54,4 +54,20 @@
     .stat-label {
         @apply text-sm text-neutral-600 uppercase tracking-wide;
     }
+
+    .container-narrow {
+        @apply max-w-6xl mx-auto px-6;
+    }
+
+    .eyebrow {
+        @apply font-mono text-[13px] uppercase tracking-[0.08em];
+    }
+
+    .chip {
+        @apply inline-flex min-h-[44px] items-center rounded-full border border-neutral-300 px-3.5 text-sm text-neutral-700 transition-colors hover:border-neutral-400 hover:text-neutral-900;
+    }
+
+    .chip-active {
+        @apply border-neutral-900 bg-neutral-900 text-neutral-50 hover:text-neutral-50;
+    }
 }

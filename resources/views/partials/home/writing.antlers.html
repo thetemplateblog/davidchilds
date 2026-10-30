@@ -1,0 +1,50 @@
+<section id="writing" class="container-narrow pt-28">
+    <div class="flex flex-wrap items-end justify-between gap-4 mb-10">
+        <div>
+            {{ if writing_eyebrow }}<p class="eyebrow text-neutral-600 mb-3">{{ writing_eyebrow }}</p>{{ /if }}
+            <h2 class="text-4xl md:text-5xl font-semibold tracking-tight">{{ writing_heading ?? 'Writing' }}</h2>
+        </div>
+        {{ if writing_categories }}
+            <div class="flex flex-wrap gap-2">
+                <a href="{{ link to="/writing" }}" class="chip chip-active">All</a>
+                {{ writing_categories }}
+                    <a href="{{ url }}" class="chip">{{ title }}</a>
+                {{ /writing_categories }}
+            </div>
+        {{ /if }}
+    </div>
+
+    {{ if featured_entries }}
+        <div class="grid gap-5 md:grid-cols-2">
+            {{ featured_entries }}
+                <a href="{{ url }}" class="group flex min-h-[300px] flex-col justify-between gap-12 rounded-2xl p-8 md:p-10 transition-colors {{ if first }}bg-neutral-900 text-neutral-50 hover:bg-neutral-800{{ else }}bg-white border border-neutral-200 hover:border-neutral-300{{ /if }}">
+                    <span class="eyebrow {{ if first }}text-neutral-400{{ else }}text-primary-700{{ /if }}">
+                        Featured{{ categories limit="1" }} · {{ title }}{{ /categories }}
+                    </span>
+                    <span class="flex flex-col gap-3.5">
+                        <span class="text-2xl md:text-3xl font-semibold leading-tight tracking-tight">{{ title }}</span>
+                        {{ if intro }}
+                            <span class="line-clamp-2 {{ if first }}text-neutral-300{{ else }}text-neutral-600{{ /if }}">{{ intro | strip_tags }}</span>
+                        {{ /if }}
+                        <time datetime="{{ date format='Y-m-d' }}" class="text-sm {{ if first }}text-neutral-400{{ else }}text-neutral-500{{ /if }}">{{ date format="M j, Y" }}</time>
+                    </span>
+                </a>
+            {{ /featured_entries }}
+        </div>
+    {{ /if }}
+
+    <div class="mt-12 border-t border-neutral-200">
+        {{ collection:writing sort="date:desc" :date:lte="now" :limit="recent_limit ?? 4" }}
+            <a href="{{ url }}" class="flex flex-wrap items-baseline gap-x-6 gap-y-1 border-b border-neutral-200 py-5 hover:text-primary-700 transition-colors">
+                <time datetime="{{ date format='Y-m-d' }}" class="w-32 shrink-0 font-mono text-sm text-neutral-500">{{ date format="M j, Y" }}</time>
+                <span class="min-w-0 flex-1 basis-80 text-lg font-medium">{{ title }}</span>
+                {{ categories limit="1" }}<span class="text-sm text-neutral-500">{{ title }}</span>{{ /categories }}
+            </a>
+        {{ /collection:writing }}
+    </div>
+
+    <a href="{{ link to="/writing" }}" class="mt-6 inline-flex min-h-[44px] items-center gap-2 font-medium text-primary-700 hover:text-primary-800">
+        All writing
+        {{ partial:home/icon name="arrow" class="w-4 h-4" }}
+    </a>
+</section>

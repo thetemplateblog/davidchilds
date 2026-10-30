@@ -1,0 +1,28 @@
+{{ if work_items }}
+    <section id="work" class="container-narrow pt-28">
+        {{ if work_eyebrow }}<p class="eyebrow text-neutral-600 mb-3">{{ work_eyebrow }}</p>{{ /if }}
+        <h2 class="mb-10 text-4xl md:text-5xl font-semibold tracking-tight">{{ work_heading ?? 'Selected work' }}</h2>
+
+        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {{ work_items }}
+                <article class="flex flex-col gap-5 rounded-2xl border border-neutral-200 bg-white p-8">
+                    <span class="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary-50 text-primary-700">
+                        {{ partial:home/icon :name="icon:value" class="w-5 h-5" }}
+                    </span>
+                    <h3 class="text-xl font-semibold tracking-tight">{{ title }}</h3>
+                    <dl class="flex flex-col gap-3 text-[15px] leading-relaxed">
+                        {{ if problem }}
+                            <div><dt class="eyebrow text-xs text-neutral-500">Problem</dt><dd class="mt-0.5 text-neutral-700">{{ problem }}</dd></div>
+                        {{ /if }}
+                        {{ if approach }}
+                            <div><dt class="eyebrow text-xs text-neutral-500">Approach</dt><dd class="mt-0.5 text-neutral-700">{{ approach }}</dd></div>
+                        {{ /if }}
+                        {{ if result }}
+                            <div><dt class="eyebrow text-xs text-neutral-500">Result</dt><dd class="mt-0.5 text-neutral-700">{{ result }}</dd></div>
+                        {{ /if }}
+                    </dl>
+                </article>
+            {{ /work_items }}
+        </div>
+    </section>
+{{ /if }}
