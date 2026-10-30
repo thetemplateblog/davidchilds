@@ -1,9 +1,9 @@
 <!-- Categories Header -->
-<section class="bg-white border-b border-neutral-200">
+<section class="bg-white dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-800">
     <div class="container-custom py-16">
         <div class="max-w-3xl">
             <h1 class="text-4xl md:text-5xl font-bold mb-4">Categories</h1>
-            <p class="text-xl text-neutral-600">
+            <p class="text-xl text-neutral-600 dark:text-neutral-400">
                 Browse articles by topic to find exactly what you're looking for.
             </p>
         </div>
@@ -11,21 +11,21 @@
 </section>
 
 <!-- Categories Grid -->
-<section class="bg-white">
+<section class="bg-white dark:bg-neutral-900">
     <div class="container-custom py-16">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {{ taxonomy:categories }}
                 <a href="{{ url }}" class="card hover:shadow-lg transition-all duration-300 block">
                     <div class="p-6">
-                        <h2 class="text-xl font-bold mb-2 text-neutral-900">{{ title }}</h2>
+                        <h2 class="text-xl font-bold mb-2 text-neutral-900 dark:text-neutral-50">{{ title }}</h2>
                         {{ if content }}
-                            <p class="text-sm text-neutral-600 mb-3">{{ content | safe_truncate:100 }}</p>
+                            <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">{{ content | safe_truncate:100 }}</p>
                         {{ /if }}
                         <div class="flex items-center justify-between">
-                            <span class="text-sm text-neutral-500">
+                            <span class="text-sm text-neutral-500 dark:text-neutral-400">
                                 {{ entries | length }} {{ entries | length == 1 ? 'article' : 'articles' }}
                             </span>
-                            <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-5 h-5 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
                         </div>

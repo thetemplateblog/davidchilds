@@ -4,11 +4,11 @@
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">{{ quote }}</h1>
 
         <!-- Quote attribution -->
-        <div class="text-lg md:text-xl text-neutral-500 mb-6">
+        <div class="text-lg md:text-xl text-neutral-500 dark:text-neutral-400 mb-6">
             — {{ quote_attribution }}
         </div>
 
         <!-- Content description -->
-        <p class="text-lg md:text-xl text-neutral-600 leading-relaxed max-w-3xl mx-auto">{{ content | markdown }}</p>
+        <p class="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-3xl mx-auto">{{ content | markdown }}</p>
     </div>
 {{ /collection:heros }}

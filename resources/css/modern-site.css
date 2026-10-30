@@ -527,36 +527,37 @@ a:hover {
 .gap-6 { gap: 1.5rem; }
 .gap-8 { gap: 2rem; }
 
-/* Dark Mode Support */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --neutral-50: #0a0a0a;
-        --neutral-100: #171717;
-        --neutral-200: #262626;
-        --neutral-300: #404040;
-        --neutral-400: #525252;
-        --neutral-500: #737373;
-        --neutral-600: #a3a3a3;
-        --neutral-700: #d4d4d4;
-        --neutral-800: #e5e5e5;
-        --neutral-900: #f5f5f5;
-        --neutral-950: #fafafa;
-    }
-    
-    body {
-        background: var(--neutral-50);
-        color: var(--neutral-800);
-    }
-    
-    .nav-modern {
-        background: rgba(10, 10, 10, 0.8);
-    }
-    
-    .card-modern,
-    .article-card {
-        background: var(--neutral-100);
-        border-color: var(--neutral-300);
-    }
+/* Dark theme (applied by the theme picker via html.dark) */
+html.dark {
+    --neutral-50: #0a0a0a;
+    --neutral-100: #171717;
+    --neutral-200: #262626;
+    --neutral-300: #404040;
+    --neutral-400: #525252;
+    --neutral-500: #a3a3a3;
+    --neutral-600: #a3a3a3;
+    --neutral-700: #d4d4d4;
+    --neutral-800: #e5e5e5;
+    --neutral-900: #f5f5f5;
+    --neutral-950: #fafafa;
+}
+
+html.dark .nav-modern {
+    background: rgba(10, 10, 10, 0.8);
+}
+
+html.dark .nav-modern.scrolled {
+    background: rgba(10, 10, 10, 0.95);
+}
+
+html.dark .btn-primary {
+    color: var(--neutral-50);
+}
+
+html.dark .btn-secondary,
+html.dark .card-modern,
+html.dark .article-card {
+    background: var(--neutral-100);
 }
 
 /* Custom Scrollbar */

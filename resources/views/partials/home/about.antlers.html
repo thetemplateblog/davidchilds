@@ -6,7 +6,7 @@
                     <img src="{{ glide :src="url" width="760" height="950" fit="crop_focal" }}" alt="{{ alt ?? 'Portrait of David Childs' }}" width="380" height="475" class="aspect-[4/5] w-full rounded-2xl object-cover" loading="lazy">
                 {{ /about_photo }}
             {{ elseif about_facts }}
-                <div class="flex flex-col gap-8 rounded-2xl bg-neutral-900 p-8 text-neutral-50">
+                <div class="flex flex-col gap-8 rounded-2xl bg-neutral-900 dark:bg-neutral-800 p-8 text-neutral-50">
                     <span class="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-neutral-50 font-mono text-lg text-neutral-900" aria-hidden="true">DC</span>
                     <dl class="flex flex-col divide-y divide-neutral-800">
                         {{ about_facts }}
@@ -20,16 +20,16 @@
             {{ /if }}
         </div>
         <div class="min-w-0 flex-1 basis-[28rem]">
-            {{ if about_eyebrow }}<p class="eyebrow text-neutral-600 mb-3">{{ about_eyebrow }}</p>{{ /if }}
+            {{ if about_eyebrow }}<p class="eyebrow text-neutral-600 dark:text-neutral-400 mb-3">{{ about_eyebrow }}</p>{{ /if }}
             <h2 class="mb-7 text-4xl md:text-5xl font-semibold tracking-tight">{{ about_heading }}</h2>
-            <div class="max-w-2xl space-y-4 text-lg leading-relaxed text-neutral-700">
+            <div class="max-w-2xl space-y-4 text-lg leading-relaxed text-neutral-700 dark:text-neutral-300">
                 {{ about_body }}
             </div>
             <div class="mt-8 flex flex-wrap gap-5 font-medium">
-                {{ if social_links:linkedin_url }}<a href="{{ social_links:linkedin_url }}" class="inline-flex min-h-[44px] items-center text-primary-700 hover:text-primary-800">LinkedIn ↗</a>{{ /if }}
-                {{ if social_links:twitter_url }}<a href="{{ social_links:twitter_url }}" class="inline-flex min-h-[44px] items-center text-primary-700 hover:text-primary-800">X ↗</a>{{ /if }}
-                {{ if social_links:github_url }}<a href="{{ social_links:github_url }}" class="inline-flex min-h-[44px] items-center text-primary-700 hover:text-primary-800">GitHub ↗</a>{{ /if }}
-                {{ if about_link }}<a href="{{ about_link }}" class="inline-flex min-h-[44px] items-center text-primary-700 hover:text-primary-800">{{ about_link_label ?? 'More about me' }} →</a>{{ /if }}
+                {{ if social_links:linkedin_url }}<a href="{{ social_links:linkedin_url }}" class="inline-flex min-h-[44px] items-center text-primary-700 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300">LinkedIn ↗</a>{{ /if }}
+                {{ if social_links:twitter_url }}<a href="{{ social_links:twitter_url }}" class="inline-flex min-h-[44px] items-center text-primary-700 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300">X ↗</a>{{ /if }}
+                {{ if social_links:github_url }}<a href="{{ social_links:github_url }}" class="inline-flex min-h-[44px] items-center text-primary-700 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300">GitHub ↗</a>{{ /if }}
+                {{ if about_link }}<a href="{{ about_link }}" class="inline-flex min-h-[44px] items-center text-primary-700 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300">{{ about_link_label ?? 'More about me' }} →</a>{{ /if }}
             </div>
         </div>
     </div>

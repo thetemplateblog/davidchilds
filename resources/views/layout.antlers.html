@@ -13,6 +13,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        {{ partial:theme_script }}
         {{ vite src="resources/js/site.js|resources/css/site.css" }}
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,10 +29,10 @@
         {{ seo_pro:meta }}
     </head>
 
-    <body class="bg-neutral-50 text-neutral-900">
+    <body class="bg-neutral-50 dark:bg-neutral-950 text-neutral-900 dark:text-neutral-50">
         <!-- header -->
         {{ if !hide_nav }}
-            <header class="bg-white border-b border-neutral-200 sticky top-0 z-50">
+            <header class="bg-white dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-800 sticky top-0 z-50">
                 {{ partial:nav }} 
             </header>
         {{ /if }}
@@ -42,7 +43,7 @@
         </main>
 
         <!-- Footer -->
-        <footer class="bg-white border-t border-neutral-200">
+        <footer class="bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-800">
             <div class="container-custom py-12">
                 {{ partial:footer }}
             </div>

@@ -1,5 +1,5 @@
 <!-- Hero Section with Original Hero Quotes -->
-<section class="bg-white border-b border-neutral-200 pt-16">
+<section class="bg-white dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-800 pt-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div class="max-w-4xl mx-auto text-center">
             {{ partial:hero }}
@@ -8,14 +8,14 @@
 </section>
 
 <!-- Categories Section -->
-<section class="bg-neutral-50 border-b border-neutral-200">
+<section class="bg-neutral-50 dark:bg-neutral-950 border-b border-neutral-200 dark:border-neutral-800">
     <div class="container-custom py-8">
         {{ partial:categories_inline }}
     </div>
 </section>
 
 <!-- Blog Posts Section -->
-<section class="bg-white">
+<section class="bg-white dark:bg-neutral-900">
     <div class="container-custom py-16">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <!-- Main Content -->
@@ -24,21 +24,21 @@
                     <h2 class="text-2xl font-bold mb-6">Search results for &ldquo;{{ get:q }}&rdquo;</h2>
                     {{ search:results }}
                         {{ if no_results }}
-                            <p class="text-neutral-600">No articles matched your search.</p>
+                            <p class="text-neutral-600 dark:text-neutral-400">No articles matched your search.</p>
                         {{ else }}
                             <article class="card hover:shadow-lg transition-all duration-300">
                                 <div class="p-8">
-                                    <h2 class="text-2xl font-bold mb-3 hover:text-primary-600 transition-colors">
+                                    <h2 class="text-2xl font-bold mb-3 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
                                         <a href="{{ url }}">{{ title }}</a>
                                     </h2>
-                                    <div class="prose prose-lg text-neutral-600 mb-4">
+                                    <div class="prose dark:prose-invert prose-lg text-neutral-600 dark:text-neutral-400 mb-4">
                                         {{ intro ?? content | strip_tags | safe_truncate:300 }}
                                     </div>
                                 </div>
                             </article>
                         {{ /if }}
                     {{ /search:results }}
-                    <a href="{{ url }}" class="inline-flex items-center text-primary-600 font-medium hover:text-primary-700 transition-colors">
+                    <a href="{{ url }}" class="inline-flex items-center text-primary-600 dark:text-primary-400 font-medium hover:text-primary-700 dark:hover:text-primary-300 transition-colors">
                         ← Back to all articles
                     </a>
                 {{ else }}
@@ -46,11 +46,11 @@
                     {{ posts }}
                         <article class="card hover:shadow-lg transition-all duration-300">
                             <div class="p-8">
-                                <h2 class="text-2xl font-bold mb-3 hover:text-primary-600 transition-colors">
+                                <h2 class="text-2xl font-bold mb-3 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
                                     <a href="{{ url }}">{{ title }}</a>
                                 </h2>
                                 
-                                <div class="flex items-center text-sm text-neutral-500 mb-4">
+                                <div class="flex items-center text-sm text-neutral-500 dark:text-neutral-400 mb-4">
                                     {{ if date }}
                                         <time datetime="{{ date format='Y-m-d' }}">
                                             {{ date format="F j, Y" }}
@@ -60,7 +60,7 @@
                                         <span class="mx-2">•</span>
                                         <div class="flex gap-2">
                                             {{ categories }}
-                                                <a href="{{ url }}" class="bg-neutral-100 px-2 py-1 rounded text-xs hover:bg-neutral-200 transition-colors">
+                                                <a href="{{ url }}" class="bg-neutral-100 dark:bg-neutral-800 px-2 py-1 rounded text-xs hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors">
                                                     {{ title }}
                                                 </a>
                                             {{ /categories }}
@@ -68,11 +68,11 @@
                                     {{ /if }}
                                 </div>
                                 
-                                <div class="prose prose-lg text-neutral-600 mb-4">
+                                <div class="prose dark:prose-invert prose-lg text-neutral-600 dark:text-neutral-400 mb-4">
                                     {{ intro ?? content | strip_tags | safe_truncate:300 }}
                                 </div>
                                 
-                                <a href="{{ url }}" class="inline-flex items-center text-primary-600 font-medium hover:text-primary-700 transition-colors">
+                                <a href="{{ url }}" class="inline-flex items-center text-primary-600 dark:text-primary-400 font-medium hover:text-primary-700 dark:hover:text-primary-300 transition-colors">
                                     Continue reading
                                     <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -120,7 +120,7 @@
                 <div class="card p-6">
                     <h3 class="font-bold text-lg mb-4">Search</h3>
                     <form method="GET" action="{{ url }}" class="flex">
-                        <input type="search" name="q" value="{{ get:q }}" placeholder="Search articles..." class="flex-1 px-4 py-2 border border-neutral-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
+                        <input type="search" name="q" value="{{ get:q }}" placeholder="Search articles..." class="flex-1 px-4 py-2 border border-neutral-300 dark:border-neutral-700 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
                         <button type="submit" class="px-4 py-2 bg-primary-600 text-white rounded-r-lg hover:bg-primary-700 transition-colors">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
@@ -135,7 +135,7 @@
                     <ul class="space-y-3">
                         {{ collection:writing sort="date:desc" :date:lte="now" limit="5" }}
                             <li>
-                                <a href="{{ url }}" class="text-neutral-600 hover:text-primary-600 transition-colors">
+                                <a href="{{ url }}" class="text-neutral-600 dark:text-neutral-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
                                     {{ title }}
                                 </a>
                             </li>

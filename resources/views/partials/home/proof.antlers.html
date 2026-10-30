@@ -1,10 +1,10 @@
 {{ if proof_stats }}
-    <section aria-label="At a glance" class="bg-white border-y border-neutral-200">
+    <section aria-label="At a glance" class="bg-white dark:bg-neutral-900 border-y border-neutral-200 dark:border-neutral-800">
         <div class="container-narrow grid grid-cols-2 {{ if (proof_stats | length) == 4 }}lg:grid-cols-4{{ else }}lg:grid-cols-3{{ /if }}">
             {{ proof_stats }}
-                <div class="py-8 pr-6 {{ unless first }}lg:pl-6 lg:border-l lg:border-neutral-200{{ /unless }}">
-                    <p class="text-4xl font-semibold tracking-tight text-neutral-900">{{ value }}</p>
-                    <p class="mt-1.5 text-sm text-neutral-600">{{ label }}</p>
+                <div class="py-8 pr-6 {{ unless first }}lg:pl-6 lg:border-l lg:border-neutral-200 dark:lg:border-neutral-800{{ /unless }}">
+                    <p class="text-4xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-50">{{ value }}</p>
+                    <p class="mt-1.5 text-sm text-neutral-600 dark:text-neutral-400">{{ label }}</p>
                 </div>
             {{ /proof_stats }}
         </div>

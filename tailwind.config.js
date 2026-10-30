@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+    darkMode: 'class',
+
     content: [
         './resources/**/*.antlers.html',
         './resources/**/*.antlers.php',

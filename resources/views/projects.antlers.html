@@ -1,39 +1,39 @@
 <!-- Hero Section -->
-<section class="bg-gradient-to-b from-neutral-50 to-white">
+<section class="bg-gradient-to-b from-neutral-50 dark:from-neutral-950 to-white dark:to-neutral-950">
     <div class="container-custom py-16 md:py-20">
         <div class="max-w-3xl mx-auto text-center">
             <h1 class="text-4xl md:text-5xl font-bold mb-4">{{ title }}</h1>
             {{ if intro }}
-                <p class="text-xl text-neutral-600">{{ intro }}</p>
+                <p class="text-xl text-neutral-600 dark:text-neutral-400">{{ intro }}</p>
             {{ /if }}
         </div>
     </div>
 </section>
 
 <!-- Projects Grid -->
-<section class="bg-white">
+<section class="bg-white dark:bg-neutral-900">
     <div class="container-custom pb-20">
         <div class="space-y-24">
             {{ projects }}
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div class="{{ if index % 2 == 0 }}order-2 lg:order-1{{ else }}order-2{{ /if }}">
                         {{ if tag }}
-                            <div class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium mb-4 {{ if tag_color:value == 'green' }}bg-green-100 text-green-800{{ elseif tag_color:value == 'purple' }}bg-purple-100 text-purple-800{{ elseif tag_color:value == 'amber' }}bg-amber-100 text-amber-800{{ else }}bg-blue-100 text-blue-800{{ /if }}">
+                            <div class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium mb-4 {{ if tag_color:value == 'green' }}bg-green-100 dark:bg-green-900/40 text-green-800 dark:text-green-300{{ elseif tag_color:value == 'purple' }}bg-purple-100 dark:bg-purple-900/40 text-purple-800 dark:text-purple-300{{ elseif tag_color:value == 'amber' }}bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300{{ else }}bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-300{{ /if }}">
                                 {{ tag }}
                             </div>
                         {{ /if }}
                         <h2 class="text-3xl md:text-4xl font-bold mb-4">{{ name }}</h2>
                         {{ if description }}
-                            <p class="text-lg text-neutral-600 mb-6">{{ description }}</p>
+                            <p class="text-lg text-neutral-600 dark:text-neutral-400 mb-6">{{ description }}</p>
                         {{ /if }}
                         {{ if features }}
                             <div class="space-y-3 mb-8">
                                 {{ features }}
                                     <div class="flex items-start">
-                                        <svg class="w-6 h-6 text-primary-600 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <svg class="w-6 h-6 text-primary-600 dark:text-primary-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                         </svg>
-                                        <span class="text-neutral-700">{{ value }}</span>
+                                        <span class="text-neutral-700 dark:text-neutral-300">{{ value }}</span>
                                     </div>
                                 {{ /features }}
                             </div>
@@ -41,7 +41,7 @@
                         {{ if tech }}
                             <div class="flex flex-wrap gap-2 mb-8">
                                 {{ tech }}
-                                    <span class="px-3 py-1 bg-neutral-100 text-neutral-700 rounded-full text-sm">{{ value }}</span>
+                                    <span class="px-3 py-1 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-full text-sm">{{ value }}</span>
                                 {{ /tech }}
                             </div>
                         {{ /if }}
@@ -60,13 +60,13 @@
                         {{ /if }}
                     </div>
                     <div class="{{ if index % 2 == 0 }}order-1 lg:order-2{{ else }}order-1{{ /if }}">
-                        <div class="rounded-xl p-8 shadow-lg {{ if tag_color:value == 'green' }}bg-gradient-to-br from-green-50 to-blue-50{{ elseif tag_color:value == 'purple' }}bg-gradient-to-br from-purple-50 to-pink-50{{ elseif tag_color:value == 'amber' }}bg-gradient-to-br from-amber-50 to-orange-50{{ else }}bg-gradient-to-br from-blue-50 to-cyan-50{{ /if }}">
+                        <div class="rounded-xl p-8 shadow-lg {{ if tag_color:value == 'green' }}bg-gradient-to-br from-green-50 dark:from-neutral-800 to-blue-50 dark:to-neutral-800{{ elseif tag_color:value == 'purple' }}bg-gradient-to-br from-purple-50 dark:from-neutral-800 to-pink-50 dark:to-neutral-800{{ elseif tag_color:value == 'amber' }}bg-gradient-to-br from-amber-50 dark:from-neutral-800 to-orange-50 dark:to-neutral-800{{ else }}bg-gradient-to-br from-blue-50 dark:from-neutral-800 to-cyan-50 dark:to-neutral-800{{ /if }}">
                             {{ if screenshot }}
                                 {{ screenshot }}
                                     <img src="{{ glide :src="url" width="1200" height="675" fit="crop_focal" }}" alt="{{ alt ?? 'Screenshot' }}" width="600" height="338" class="w-full rounded-lg shadow-md aspect-video object-cover" loading="lazy">
                                 {{ /screenshot }}
                             {{ else }}
-                                <div class="bg-white rounded-lg shadow-md aspect-video flex items-center justify-center">
+                                <div class="bg-white dark:bg-neutral-900 rounded-lg shadow-md aspect-video flex items-center justify-center">
                                     <p class="text-neutral-400 text-lg">{{ name }} screenshot</p>
                                 </div>
                             {{ /if }}

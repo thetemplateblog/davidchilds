@@ -1,12 +1,12 @@
 <section class="container-narrow pt-24 pb-20 md:pt-28">
     {{ if hero_eyebrow }}
-        <p class="eyebrow text-primary-700 mb-6">{{ hero_eyebrow }}</p>
+        <p class="eyebrow text-primary-700 dark:text-primary-400 mb-6">{{ hero_eyebrow }}</p>
     {{ /if }}
 
     <h1 class="max-w-5xl text-5xl md:text-7xl font-semibold leading-[1.02] tracking-[-0.035em]">{{ hero_heading }}</h1>
 
     {{ if hero_intro }}
-        <p class="mt-8 max-w-2xl text-lg md:text-xl leading-relaxed text-neutral-600">{{ hero_intro }}</p>
+        <p class="mt-8 max-w-2xl text-lg md:text-xl leading-relaxed text-neutral-600 dark:text-neutral-400">{{ hero_intro }}</p>
     {{ /if }}
 
     {{ if hero_primary_link || hero_secondary_link }}
