@@ -16,8 +16,8 @@
         "laravel/framework": "^12.40",
         "laravel/nightwatch": "^1.28",
         "laravel/tinker": "^2.9",
-        "statamic/cms": "6.36.0",
-        "statamic/seo-pro": "7.15.1"
+        "statamic/cms": "6.39.0",
+        "statamic/seo-pro": "7.16.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.8.1",
