@@ -114,8 +114,8 @@ tabs:
             handle: writing_categories
             field:
               type: terms
-              display: 'Category chips'
-              instructions: 'Categories shown as filter chips beside the heading.'
+              display: 'Home page topics'
+              instructions: 'Shown as chips beside the heading. The recent posts list only includes posts in these categories (leave empty to show all).'
               taxonomies:
                 - categories
               mode: select

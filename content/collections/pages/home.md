@@ -34,7 +34,6 @@ writing_categories:
   - devops
   - aws
   - cloud
-  - entrepreneur
 featured_entries:
   - ai-ethics-responsible-2025
   - ai-mlops-lifecycle-2025
