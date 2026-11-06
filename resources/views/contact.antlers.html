@@ -37,6 +37,9 @@
                         {{ /if }}
                         
                         <div class="space-y-6">
+                            <!-- Honeypot: hidden from people; bots that fill it are silently dropped -->
+                            <input type="text" name="{{ honeypot }}" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+
                             <!-- Name Field -->
                             <div>
                                 <label for="name" class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">

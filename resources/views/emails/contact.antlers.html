@@ -74,13 +74,13 @@
                 <span class="label">{{ display }}</span>
                 <div class="value">
                     {{ if handle == 'email' }}
-                        <a href="mailto:{{ value }}">{{ value }}</a>
+                        <a href="mailto:{{ value | sanitize }}">{{ value | sanitize }}</a>
                     {{ elseif handle == 'message' }}
                         <div class="message-content">
-                            {{ value | nl2br }}
+                            {{ value | sanitize | nl2br }}
                         </div>
                     {{ else }}
-                        {{ value }}
+                        {{ value | sanitize }}
                     {{ /if }}
                 </div>
             </div>
