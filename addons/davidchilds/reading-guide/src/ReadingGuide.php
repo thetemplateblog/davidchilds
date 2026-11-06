@@ -24,6 +24,21 @@ class ReadingGuide
         return (bool) static::setting('enabled', false) && filled(config('reading-guide.api_key'));
     }
 
+    public static function launcher(): bool
+    {
+        return (bool) static::setting('launcher', true);
+    }
+
+    public static function launcherLabel(): string
+    {
+        return (string) static::setting('launcher_label', 'Ask');
+    }
+
+    public static function launcherBadge(): bool
+    {
+        return (bool) static::setting('launcher_badge', true);
+    }
+
     public static function title(): string
     {
         return (string) static::setting('title', 'What would you like to read?');

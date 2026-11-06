@@ -36,7 +36,7 @@ writing_categories:
   - cloud
 featured_entries:
   - ai-ethics-responsible-2025
-  - ai-mlops-lifecycle-2025
+  - mlops-deployment-production-guide-2024
 recent_limit: 4
 work_eyebrow: 'Selected work'
 work_heading: "Platforms I've built"

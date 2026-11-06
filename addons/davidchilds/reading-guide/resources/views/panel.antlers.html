@@ -5,12 +5,15 @@
     window.readingGuide = window.readingGuide || function (endpoint, token) {
         return {
             open: false,
+            seen: false,
             busy: false,
             error: '',
             draft: '',
             messages: [],
 
             init() {
+                try { this.seen = localStorage.getItem('reading-guide-seen') === '1'; } catch (e) {}
+
                 try {
                     const saved = JSON.parse(sessionStorage.getItem('reading-guide') || 'null');
                     if (saved && Array.isArray(saved.messages)) {
@@ -22,6 +25,10 @@
                 this.$watch('messages', () => this.save());
                 this.$watch('open', (value) => {
                     this.save();
+                    if (value && !this.seen) {
+                        this.seen = true;
+                        try { localStorage.setItem('reading-guide-seen', '1'); } catch (e) {}
+                    }
                     if (value) {
                         this.$nextTick(() => { this.scroll(); this.$refs.input && this.$refs.input.focus(); });
                     }
@@ -100,6 +107,27 @@
 
 <div x-data="readingGuide('{{ endpoint }}', '{{ csrf_token }}')" x-cloak @reading-guide-open.window="open = true; if ($event.detail && $event.detail.q) { ask($event.detail.q) }" class="print:hidden">
     {{# Panel #}}
+    {{ if launcher }}
+        {{# Floating button, lower-right. The badge stands for the unread greeting and clears once the guide has been opened. #}}
+        <button
+            type="button"
+            x-show="!open"
+            @click="open = true"
+            aria-haspopup="dialog"
+            aria-controls="reading-guide-panel"
+            id="reading-guide-launcher"
+            {{ if launcher_badge }}:aria-label="seen || messages.length ? 'Ask what to read' : 'Ask what to read, 1 new message'"{{ /if }}
+            aria-label="Ask what to read"
+            class="fixed bottom-5 right-5 z-40 inline-flex h-14 items-center gap-2 rounded-full bg-neutral-900 pl-5 pr-6 text-base font-semibold text-neutral-50 shadow-xl ring-1 ring-black/5 transition hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 sm:bottom-6 sm:right-6 dark:bg-neutral-50 dark:text-neutral-900 dark:hover:bg-neutral-200"
+        >
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg>
+            <span>{{ launcher_label }}</span>
+            {{ if launcher_badge }}
+                <span x-show="!seen && !messages.length" aria-hidden="true" class="absolute -right-1 -top-1 inline-flex h-6 min-w-[1.5rem] items-center justify-center rounded-full bg-red-600 px-1.5 text-xs font-bold leading-none text-white ring-2 ring-white dark:ring-neutral-950">1</span>
+            {{ /if }}
+        </button>
+    {{ /if }}
+
     <section
         id="reading-guide-panel"
         x-show="open"

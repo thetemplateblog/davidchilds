@@ -12,6 +12,31 @@ tabs:
               display: 'Show the reading guide'
               instructions: 'Turns the guide on or off across the site. It also needs a Claude API key (ANTHROPIC_API_KEY) in .env, so it never shows where it can''t answer.'
       -
+        display: Launcher
+        instructions: 'The floating button in the lower-right corner. You can also open the guide from your own templates (see the README).'
+        fields:
+          -
+            handle: launcher
+            field:
+              type: toggle
+              display: 'Show the floating button'
+              default: true
+          -
+            handle: launcher_label
+            field:
+              type: text
+              display: 'Button label'
+              default: Ask
+              width: 50
+          -
+            handle: launcher_badge
+            field:
+              type: toggle
+              display: 'Show a "1" for the unread greeting'
+              instructions: 'A red badge on the button until the visitor opens the guide for the first time. It stays cleared on later pages and visits in that browser.'
+              default: true
+              width: 50
+      -
         display: Wording
         fields:
           -

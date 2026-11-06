@@ -35,6 +35,9 @@ class ReadingGuide extends Tags
             'greeting' => Guide::greeting(),
             'suggestions' => array_map(fn ($s) => ['value' => $s], Guide::suggestions()),
             'endpoint' => route('statamic.reading-guide.chat', [], false),
+            'launcher' => Guide::launcher(),
+            'launcher_label' => Guide::launcherLabel(),
+            'launcher_badge' => Guide::launcherBadge(),
         ])->render();
     }
 

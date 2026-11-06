@@ -193,8 +193,10 @@ class ReadingGuideTest extends TestCase
         $this->assertStringContainsString("readingGuide('/!/reading-guide/chat'", $html);
         $this->assertStringContainsString('id="home-ask"', $html);
         $this->assertStringContainsString('Keeping AI features safe', $html);
-        $this->assertStringContainsString('aria-label="Ask what to read"', $html);
-        $this->assertStringNotContainsString('Start here', $html);
+        $this->assertStringContainsString('id="reading-guide-launcher"', $html);
+        $this->assertStringContainsString('1 new message', $html);
+        $this->assertStringContainsString('Start here', $html);
+        $this->assertStringContainsString('placeholder="What would you like to read?"', $html);
     }
 
     public function test_log_command(): void

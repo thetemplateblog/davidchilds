@@ -109,14 +109,13 @@ tabs:
             field:
               type: text
               display: Heading
-              instructions: 'Shown only while the Reading Guide addon is off (Tools › Addons › Reading Guide › Settings); otherwise its question box takes this spot.'
               width: 50
           -
             handle: writing_categories
             field:
               type: terms
               display: 'Home page topics'
-              instructions: 'The recent posts list only includes posts in these categories (leave empty to show all). Also shown as chips beside the heading while the reading guide is off.'
+              instructions: 'The recent posts list only includes posts in these categories (leave empty to show all). Also shown as chips beside the heading while the reading guide is off (when it is on, its question box takes their place).'
               taxonomies:
                 - categories
               mode: select

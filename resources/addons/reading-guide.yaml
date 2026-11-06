@@ -1,4 +1,7 @@
 enabled: true
+launcher: true
+launcher_label: Ask
+launcher_badge: true
 title: 'What would you like to read?'
 greeting: "Tell me what you're curious about and I'll find the right article."
 suggestions:
