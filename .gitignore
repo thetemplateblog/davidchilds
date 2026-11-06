@@ -23,3 +23,7 @@ yarn-error.log
 
 # Reading Guide addon: visitor question logs
 /storage/logs/reading-guide/
+
+# Locally installed agent skills
+/.agents/
+/skills-lock.json
