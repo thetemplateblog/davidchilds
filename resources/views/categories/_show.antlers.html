@@ -121,7 +121,7 @@
                 <div class="card p-6">
                     <h3 class="font-bold text-lg mb-4">Other Categories</h3>
                     <div class="space-y-2">
-                        {{ taxonomy:categories limit="8" sort="random" }}
+                        {{ taxonomy:categories collection="writing" limit="8" sort="random" }}
                             {{ unless id == page:id }}
                                 <a href="{{ url }}" class="block text-neutral-600 dark:text-neutral-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
                                     {{ title }}

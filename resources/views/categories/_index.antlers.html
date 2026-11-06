@@ -14,7 +14,7 @@
 <section class="bg-white dark:bg-neutral-900">
     <div class="container-custom py-16">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {{ taxonomy:categories }}
+            {{ taxonomy:categories collection="writing" }}
                 <a href="{{ url }}" class="card hover:shadow-lg transition-all duration-300 block">
                     <div class="p-6">
                         <h2 class="text-xl font-bold mb-2 text-neutral-900 dark:text-neutral-50">{{ title }}</h2>
