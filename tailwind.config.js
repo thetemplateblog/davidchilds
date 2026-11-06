@@ -8,6 +8,7 @@ module.exports = {
         './resources/**/*.blade.php',
         './resources/**/*.vue',
         './content/**/*.md',
+        './addons/*/*/resources/views/**/*.antlers.html',
     ],
 
     theme: {

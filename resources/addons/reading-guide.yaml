@@ -1,0 +1,17 @@
+enabled: true
+title: 'What would you like to read?'
+greeting: "Tell me what you're curious about and I'll find the right article."
+suggestions:
+  - 'Keeping AI features safe'
+  - 'Testing LLM output'
+  - 'Getting started with AWS'
+  - 'Better Git workflows'
+site_description: 'davidchilds.me, the personal site of David Childs, a principal engineer who writes about AI platforms, cloud and DevOps'
+topics:
+  - 'AI platforms and governance'
+  - 'LLM evaluation'
+  - 'RAG'
+  - 'prompt injection'
+  - 'AWS'
+  - 'DevOps'
+  - 'Git'

@@ -24,7 +24,16 @@
                 {{ /nav:collection:pages }}
             </div>
 
-            {{ partial:theme_picker }}
+            {{ if {reading_guide:ready} }}
+                <button type="button" @click="$dispatch('reading-guide-open'); open = false" aria-label="Ask what to read" class="inline-flex h-9 items-center gap-1.5 rounded-full bg-neutral-900 px-3 text-sm font-medium text-neutral-50 transition-colors hover:bg-neutral-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 dark:bg-neutral-50 dark:text-neutral-900 dark:hover:bg-neutral-200">
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg>
+                    <span>Ask</span>
+                </button>
+            {{ /if }}
+
+            <div class="hidden md:block">
+                {{ partial:theme_picker }}
+            </div>
 
             <!-- Mobile menu button -->
             <button type="button" class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-50 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500" @click="open = !open" aria-label="Menu" :aria-expanded="open.toString()" aria-expanded="false">
@@ -48,6 +57,10 @@
                         </a>
                     {{ /if }}
                 {{ /nav:collection:pages }}
+                <div class="flex items-center justify-between px-3 pt-3">
+                    <span class="text-sm text-neutral-600 dark:text-neutral-400">Theme</span>
+                    {{ partial:theme_picker }}
+                </div>
             </div>
         </div>
         </div>

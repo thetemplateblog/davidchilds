@@ -1,0 +1,177 @@
+{{# Reading Guide chat panel (davidchilds/reading-guide). Rendered by {{ reading_guide }}.
+    Override by copying to resources/views/vendor/reading-guide/panel.antlers.html. #}}
+<style>[x-cloak]{display:none!important}</style>
+<script>
+    window.readingGuide = window.readingGuide || function (endpoint, token) {
+        return {
+            open: false,
+            busy: false,
+            error: '',
+            draft: '',
+            messages: [],
+
+            init() {
+                try {
+                    const saved = JSON.parse(sessionStorage.getItem('reading-guide') || 'null');
+                    if (saved && Array.isArray(saved.messages)) {
+                        this.messages = saved.messages;
+                        this.open = !!saved.open;
+                    }
+                } catch (e) {}
+
+                this.$watch('messages', () => this.save());
+                this.$watch('open', (value) => {
+                    this.save();
+                    if (value) {
+                        this.$nextTick(() => { this.scroll(); this.$refs.input && this.$refs.input.focus(); });
+                    }
+                });
+            },
+
+            save() {
+                try {
+                    sessionStorage.setItem('reading-guide', JSON.stringify({ open: this.open, messages: this.messages.slice(-20) }));
+                } catch (e) {}
+            },
+
+            scroll() {
+                const log = this.$refs.log;
+                if (log) { log.scrollTop = log.scrollHeight; }
+            },
+
+            reset() {
+                this.messages = [];
+                this.error = '';
+                this.$nextTick(() => this.$refs.input && this.$refs.input.focus());
+            },
+
+            async ask(text) {
+                text = (text || '').trim().slice(0, 600);
+                if (!text || this.busy) { return; }
+
+                this.error = '';
+                this.draft = '';
+                this.messages.push({ role: 'user', content: text, articles: [] });
+                this.busy = true;
+                this.$nextTick(() => this.scroll());
+
+                const history = this.messages.slice(-10).map((m) => ({ role: m.role, content: m.content }));
+                while (history.length && history[0].role !== 'user') { history.shift(); }
+
+                try {
+                    const res = await fetch(endpoint, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            'X-CSRF-TOKEN': token,
+                        },
+                        body: JSON.stringify({ messages: history }),
+                    });
+                    const data = await res.json().catch(() => ({}));
+
+                    if (!res.ok) {
+                        this.error = res.status === 419
+                            ? 'Your session expired. Refresh the page and try again.'
+                            : res.status === 429 && !data.error
+                                ? "You're sending messages quickly. Give it a minute and try again."
+                                : (data.error || 'Something went wrong. Please try again.');
+                        this.messages.pop();
+                        this.draft = text;
+                        return;
+                    }
+
+                    const articles = (Array.isArray(data.articles) ? data.articles : [])
+                        .filter((a) => a && typeof a.url === 'string' && a.url.startsWith('/') && !a.url.startsWith('//'));
+
+                    this.messages.push({ role: 'assistant', content: data.reply || 'Here is what I found.', articles });
+                } catch (e) {
+                    this.error = "I couldn't reach the server. Check your connection and try again.";
+                    this.messages.pop();
+                    this.draft = text;
+                } finally {
+                    this.busy = false;
+                    this.$nextTick(() => this.scroll());
+                }
+            },
+        };
+    };
+</script>
+
+<div x-data="readingGuide('{{ endpoint }}', '{{ csrf_token }}')" x-cloak @reading-guide-open.window="open = true; if ($event.detail && $event.detail.q) { ask($event.detail.q) }" class="print:hidden">
+    {{# Panel #}}
+    <section
+        id="reading-guide-panel"
+        x-show="open"
+        x-transition.opacity.duration.150ms
+        @keydown.escape.window="open = false"
+        role="dialog"
+        aria-labelledby="reading-guide-title"
+        class="fixed inset-x-3 bottom-3 z-50 flex max-h-[min(640px,calc(100vh-1.5rem))] flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-2xl sm:inset-x-auto sm:right-6 sm:bottom-6 sm:w-[400px] dark:border-neutral-800 dark:bg-neutral-900"
+    >
+        <header class="flex items-center justify-between gap-2 border-b border-neutral-200 px-4 py-2 dark:border-neutral-800">
+            <h2 id="reading-guide-title" class="text-base font-semibold tracking-tight text-neutral-900 dark:text-neutral-50">{{ title }}</h2>
+            <div class="flex items-center">
+                <button type="button" x-show="messages.length" @click="reset()" class="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-lg px-2 text-sm text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-50">Start over</button>
+                <button type="button" @click="open = false" aria-label="Close chat" class="inline-flex h-11 w-11 items-center justify-center rounded-lg text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-50">
+                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+                </button>
+            </div>
+        </header>
+
+        <div x-ref="log" role="log" aria-live="polite" class="flex-1 space-y-4 overflow-y-auto px-4 py-4">
+            <p class="max-w-[85%] rounded-2xl rounded-tl-md bg-neutral-100 px-3.5 py-2.5 text-[15px] leading-relaxed text-neutral-800 dark:bg-neutral-800 dark:text-neutral-100">{{ greeting }}</p>
+
+            {{ if suggestions }}
+                <div x-show="!messages.length" class="flex flex-wrap gap-2">
+                    {{ suggestions }}
+                        <button type="button" data-q="{{ value | entities }}" @click="ask($el.dataset.q)" class="inline-flex min-h-[44px] items-center rounded-full border border-neutral-300 px-3.5 text-sm text-neutral-700 transition-colors hover:border-neutral-400 hover:text-neutral-900 dark:border-neutral-700 dark:text-neutral-300 dark:hover:border-neutral-500 dark:hover:text-neutral-50">{{ value }}</button>
+                    {{ /suggestions }}
+                </div>
+            {{ /if }}
+
+            <template x-for="(m, i) in messages" :key="i">
+                <div :class="m.role === 'user' ? 'flex justify-end' : 'space-y-2'">
+                    <p
+                        x-text="m.content"
+                        class="max-w-[85%] whitespace-pre-line px-3.5 py-2.5 text-[15px] leading-relaxed"
+                        :class="m.role === 'user'
+                            ? 'rounded-2xl rounded-tr-md bg-neutral-900 text-neutral-50 dark:bg-neutral-50 dark:text-neutral-900'
+                            : 'rounded-2xl rounded-tl-md bg-neutral-100 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-100'"
+                    ></p>
+                    <template x-for="a in (m.articles || [])" :key="a.url">
+                        <a :href="a.url" class="block rounded-xl border border-neutral-200 px-3.5 py-3 transition-colors hover:border-primary-500 dark:border-neutral-700 dark:hover:border-primary-400">
+                            <span class="block font-medium leading-snug text-neutral-900 dark:text-neutral-50" x-text="a.title"></span>
+                            <span class="mt-1 block text-sm leading-snug text-neutral-600 line-clamp-2 dark:text-neutral-400" x-show="a.intro" x-text="a.intro"></span>
+                            <span class="mt-1.5 inline-flex items-center gap-1 text-sm font-medium text-primary-700 dark:text-primary-400">Read it <span aria-hidden="true">→</span></span>
+                        </a>
+                    </template>
+                </div>
+            </template>
+
+            <p x-show="busy" class="inline-flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400">
+                <span class="inline-block h-2 w-2 animate-pulse rounded-full bg-primary-600 dark:bg-primary-400" aria-hidden="true"></span>
+                Looking through the articles…
+            </p>
+        </div>
+
+        <p x-show="error" x-text="error" role="alert" class="mx-4 mb-2 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-800 dark:bg-red-950/40 dark:text-red-300"></p>
+
+        <form @submit.prevent="ask(draft)" class="flex items-end gap-2 border-t border-neutral-200 p-3 dark:border-neutral-800">
+            <label for="reading-guide-input" class="sr-only">What would you like to read about?</label>
+            <textarea
+                id="reading-guide-input"
+                x-ref="input"
+                x-model="draft"
+                rows="1"
+                maxlength="600"
+                placeholder="e.g. how to test an LLM feature"
+                @keydown.enter="if (!$event.shiftKey) { $event.preventDefault(); ask(draft) }"
+                class="max-h-32 min-h-[44px] flex-1 resize-none rounded-xl border border-neutral-300 bg-white px-3.5 py-2.5 text-base text-neutral-900 placeholder:text-neutral-500 focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-50"
+            ></textarea>
+            <button type="submit" :disabled="busy || !draft.trim()" aria-label="Send" class="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary-700 text-white transition hover:bg-primary-600 disabled:cursor-not-allowed disabled:opacity-40">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+        </form>
+    </section>
+</div>

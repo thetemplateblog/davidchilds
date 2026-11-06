@@ -20,3 +20,6 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+# Reading Guide addon: visitor question logs
+/storage/logs/reading-guide/

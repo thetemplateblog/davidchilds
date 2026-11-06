@@ -1,0 +1,54 @@
+tabs:
+  main:
+    display: Settings
+    sections:
+      -
+        display: Visibility
+        fields:
+          -
+            handle: enabled
+            field:
+              type: toggle
+              display: 'Show the reading guide'
+              instructions: 'Turns the guide on or off across the site. It also needs a Claude API key (ANTHROPIC_API_KEY) in .env, so it never shows where it can''t answer.'
+      -
+        display: Wording
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              display: Title
+              default: 'What would you like to read?'
+              instructions: 'Heading of the chat panel. Templates can show it with the reading_guide:title tag.'
+          -
+            handle: greeting
+            field:
+              type: textarea
+              display: Greeting
+              rows: 2
+              default: "Tell me what you're curious about and I'll find the right article."
+              instructions: 'First message visitors see when they open the chat.'
+          -
+            handle: suggestions
+            field:
+              type: list
+              display: 'Suggested questions'
+              instructions: 'Tappable chips before the first message. Templates can loop them with the reading_guide:suggestions tag.'
+      -
+        display: 'About your site'
+        instructions: 'Tells the guide what the site is, so it can describe picks and suggest topics when nothing matches.'
+        fields:
+          -
+            handle: site_description
+            field:
+              type: textarea
+              display: 'What is this site?'
+              rows: 2
+              instructions: 'One sentence, e.g. "the personal site of Jane Doe, who writes about product design".'
+          -
+            handle: topics
+            field:
+              type: list
+              display: 'Topics you cover'
+              instructions: 'Suggested to visitors when nothing matches their question.'

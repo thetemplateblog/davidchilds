@@ -1,0 +1,54 @@
+{
+    "name": "davidchilds/reading-guide",
+    "description": "An AI reading guide for Statamic: visitors ask what they want to read, and Claude finds the right entries from your collections.",
+    "type": "statamic-addon",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "David Childs"
+        }
+    ],
+    "keywords": [
+        "statamic",
+        "addon",
+        "ai",
+        "chatbot",
+        "search",
+        "claude"
+    ],
+    "autoload": {
+        "psr-4": {
+            "Davidchilds\\ReadingGuide\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Davidchilds\\ReadingGuide\\Tests\\": "tests"
+        }
+    },
+    "require": {
+        "php": "^8.2",
+        "statamic/cms": "^6.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^10.8"
+    },
+    "config": {
+        "allow-plugins": {
+            "pixelfear/composer-dist-plugin": true
+        }
+    },
+    "extra": {
+        "statamic": {
+            "name": "Reading Guide",
+            "description": "Visitors ask what they want to read; Claude finds the right entries from your collections."
+        },
+        "laravel": {
+            "providers": [
+                "Davidchilds\\ReadingGuide\\ServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

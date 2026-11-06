@@ -13,10 +13,11 @@
         "arthurperton/popular": "^1.1",
         "aryehraber/statamic-logbook": "^4.0",
         "austenc/socialize": "^1.0",
+        "davidchilds/reading-guide": "*",
         "laravel/framework": "^12.40",
         "laravel/nightwatch": "^1.28",
         "laravel/tinker": "^2.9",
-        "statamic/cms": "6.39.0",
+        "statamic/cms": "6.40.0",
         "statamic/seo-pro": "7.16.0"
     },
     "require-dev": {
@@ -77,5 +78,14 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "path",
+            "url": "addons/davidchilds/reading-guide",
+            "options": {
+                "symlink": true
+            }
+        }
+    ]
 }
